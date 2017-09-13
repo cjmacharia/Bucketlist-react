@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import  { Panel, Col, FormGroup,FormControl, Button}from 'react-bootstrap';
+import { Redirect } from 'react-router-dom'
 import axios from 'axios';
 import Navigator from './navigate.js'
 class RegisterPage extends Component{
@@ -8,6 +9,7 @@ class RegisterPage extends Component{
         this.state={
             username:'',
             email:'',
+            redirect:false,
             password:'',
             cpassword:''
         }
@@ -19,26 +21,18 @@ class RegisterPage extends Component{
         "username":this.state.username,
         "password":this.state.password,
         "cpassword":this.state.cpassword
-
         }
-        console.log(payload)
+        if  (this.state.password !== this.state.cpassword){
+            alert("password mismatch please try again")
+            return 0;
+        }
+
         axios.post(apiUrl+'api/bucketlists/auth/register/', payload)
         .then((response)=>{
-            // if (response.data.code === 200){
-            //     console.log("Login successfull");
-            //     alert("successful")
-            // }
-            // if(response.data.code === 401){
-            //     console.log("an authorization error occured please try again");
-            //     alert("authorization error please try again")
+                alert(response.data.message)
+                this.setState({redirect:true})
 
-            // }
-            // if(response.data.code === 403){
-            //     console.log("an error occured please try again");
-            //     alert("an error occured")
-
-            // }
-            console.log(JSON.stringify(response))
+            // console.log(JSON.stringify(response))
         })
         .catch((error)=> {
             alert(error.response.data.error)
@@ -46,6 +40,10 @@ class RegisterPage extends Component{
         )
     }
       render(){
+          const redirect = this.state.redirect
+          if ( redirect ){
+              return <Redirect to={{pathname: '/login'}} />
+          }
           return(
             <div>
                 <Navigator />
