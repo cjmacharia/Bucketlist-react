@@ -12,7 +12,7 @@ class LoginPage extends Component {
         redirect:false
     }
     }
-    handleClick(event){
+    handleClick(event) {
         var apiUrl = "http://localhost:5000/";
         var payload = {
         "email":this.state.email,
@@ -20,16 +20,15 @@ class LoginPage extends Component {
         }
         console.log(payload)
         axios.post(apiUrl+'api/bucketlists/auth/login/', payload)
-        .then((response)=>{
+        .then((response)=> {
            this.setState({redirect:true})
-           window.localStorage.setItem('token' , response.data.token)
-           console.log(window.localStorage.setItem('token' , response.data.token))
+           window.localStorage.setItem('token' , response.data.access_token)
            console.log(JSON.stringify(response))
         }
     )
     .catch((error)=> {
         console.log(error);
-        alert(error.response.data.message)
+        alert(error.response.data.error)
     })
     }
       render(){
