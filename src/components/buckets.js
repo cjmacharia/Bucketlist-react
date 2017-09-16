@@ -48,7 +48,7 @@ render(){
                     <Col md = {4} >
                     <Panel header={bucketlist.name}
                      bsStyle="info">
-				  				<a href="/addItem" className="btn btn-primary fa fa-plus" ></a>
+				  				<a href="/addItem:bucketlist_id" className="btn btn-primary fa fa-plus" ></a>
                                   <a href="/deleteBucket" className="btn btn-danger fa fa-trash"></a>
                                   <a href="/editBucket" className="btn btn-warning fa fa-pencil"></a>
                                   </Panel>

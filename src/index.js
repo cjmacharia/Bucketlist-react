@@ -22,7 +22,7 @@ ReactDOM.render(
             <Route exact path="/register" component={RegisterPage} />
             <Proutes exact path="/welcome" component={Dashboard} />
             <Proutes exact path="/mybuckets" component={Mybuckets}/>
-            <Proutes exact path="/addItem" component={AddItem}/>
+            <Proutes exact path="/addItem/:bucketlist_id" component={AddItem}/>
             <Proutes exact path="/editItem" component={EditBucket}/>
 
         </div>

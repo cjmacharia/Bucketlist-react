@@ -18,6 +18,7 @@ handleClick(event) {
     "name":this.state.name,
     }
     console.log(payload)
+    console.log(this.props.match.params)
     axios({
         url : apiUrl+'api/bucketlists/'+this.props.match.params.bucketlist_id+'/items/',
         data: payload,
