@@ -48,7 +48,7 @@ class RegisterPage extends Component{
             <div>
                 <Navigator />
 
-                <Col md = {6} mdPush={3} >
+                <Col md = {4} mdPush={4} >
                 <form>
                 <Panel header='Register' bsStyle="warning">
                 <FormGroup>
