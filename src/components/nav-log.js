@@ -14,7 +14,7 @@ class  Loggedin extends Component{
                 </Navbar.Header>
 
                   <Nav pullRight>
-                    <NavItem eventKey={1} href="/mybuckets">my buckets</NavItem>
+                    <NavItem eventKey={1} href="/api/bucketlist/mybuckets">my buckets</NavItem>
                     <NavItem eventKey={2} href="/login">logout</NavItem>
                     <NavItem eventKey={2} href="/welcome">add new</NavItem>
                   </Nav>
