@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import {Navbar, Nav, NavItem } from 'react-bootstrap';
+import './style.css'
 
 class  Navigator extends Component{
       render(){
           return(
             <div className="HomePage">
-                <Navbar inverse >
+                <Navbar inverse className="sNav" >
                 <Navbar.Header>
                   <Navbar.Brand>
                     <a href="/">Home</a>
