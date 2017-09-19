@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import  { Panel, Col, FormGroup,FormControl, Button}from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-import Navigator from './navigate.js'
+import Navigator from './navigate.js';
+import ReactToaster from 'react-toastr';
+import {ToastContainer, ToastMessage} from 'react-toastr';
+import Toaster from '../containers/toaster.js';
+let ToastMessageFactory = React.createFactory(ToastMessage.animation);
 class LoginPage extends Component {
     constructor(props) {
     super(props);
@@ -18,7 +22,6 @@ class LoginPage extends Component {
         "email":this.state.email,
         "password":this.state.password
         }
-        console.log(payload)
         axios.post(apiUrl+'api/bucketlists/auth/login/', payload)
         .then((response)=> {
            this.setState({redirect:true})
@@ -40,7 +43,7 @@ class LoginPage extends Component {
             <div>
                 <Navigator />
 
-                <Col md = {6} mdPush={3} >
+                <Col md = {4} mdPush={4} >
                 <form data-toggle="validator">
                 <Panel header='login' bsStyle="warning">
                 <FormGroup>
