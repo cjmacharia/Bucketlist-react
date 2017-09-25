@@ -6,38 +6,38 @@ import  { FormGroup,FormControl, Button, Col,InputGroup }from 'react-bootstrap';
 import axios from 'axios';
 import Toaster from '../containers/toaster.js';
 class Dashboard extends Component{
-    constructor(props){
+  constructor(props){
     super(props);
     this.state={
-        name:'',
+      name:'',
     }
-}
-handleClick(event) {
-    console.log(window.localStorage.getItem("token"))
-    var apiUrl = "http://localhost:5000/";
-    var payload = {
-    "name":this.state.name,
-    }
-    console.log(payload)
+  }
 
-    axios({
-        url : apiUrl+'api/bucketlists/',
-        data: payload,
-        method: "post",
-        headers: {
-            'Authorization' :"Bearer " +window.localStorage.getItem("token"),
-            'content_type':"application/json"
-        }
-    })
+handleClick(event) {
+  event.preventDefault()
+  var apiUrl = "http://localhost:5000/";
+  var payload = {
+    name:this.state.name,
+  }
+  axios({
+      url : apiUrl+'api/bucketlists/',
+      data: payload,
+      method: "post",
+      headers: {
+          'Authorization' :"Bearer " +window.localStorage.getItem("token"),
+          'content_type':"application/json"
+      }
+  })
     .then((response)=> {
 
        this.setState({redirect:true})
+       toast.success(response.data.message)
     }
 )
 .catch((error)=> {
-    if (error.response) {
+
         toast.error(error.response.data.error);
-            }
+
 })
 }
 
@@ -57,7 +57,7 @@ handleClick(event) {
                 <FormGroup>
                 <InputGroup>
                 <FormControl type="text" placeholder="bucketlist name" onChange={(event)=>this.setState({name:event.target.value})} required/>
-                <InputGroup.Button><Button bsStyle="primary" onClick={(event=>this.handleClick(event))}>Submit</Button></InputGroup.Button>
+                <InputGroup.Button><Button type="submit" bsStyle="primary" onClick={(event=>this.handleClick(event))}>Submit</Button></InputGroup.Button>
                 </InputGroup>
                 </FormGroup>
                 </Col>

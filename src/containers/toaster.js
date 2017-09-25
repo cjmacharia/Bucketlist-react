@@ -5,7 +5,7 @@ class Toaster extends Component{
 render(){
 return(
     <ToastContainer
-    position="top-right"
+    position="bottom-left"
     type="default"
     autoClose={5000}
     hideProgressBar={true}
