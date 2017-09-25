@@ -6,18 +6,17 @@ import 'bootstrap/dist/css/bootstrap-theme.css';
 import HomePage from './components/home';
 import Dashboard from './components/welcome';
 import LoginPage from './components/login';
-import AddItem from './components/additem';
 import  Mybuckets from './components/buckets';
-import  Manipulation from './components/editbucket';
 import Proutes from './containers/private.js';
 import RegisterPage from './components/register';
+import noMatch from './components/nomatch';
 import BucketItems from './components/items';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
     <Router>
-        <div>
+        <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/login" component={LoginPage} />
             <Route exact path="/register" component={RegisterPage} />
@@ -25,11 +24,11 @@ ReactDOM.render(
             <Proutes exact path="/api/bucketlist/mybuckets" component={Mybuckets}/>
             <Proutes exact path="/api/bucketlist/" component={Mybuckets}/>
             <Proutes exact path="/api/bucketlist" component={Mybuckets}/>
-            <Proutes exact path="/api/bucketlist/addItem/:bucketlist_id" component={AddItem}/>
-            <Proutes exact path="/api/bucketlist/editbucketlist/:bucketlist_id" component={Manipulation}/>
+            <Proutes exact path="/api/bucketlist/addItem/:bucketlist_id" component={Mybuckets}/>
             <Proutes exact path="/api/bucketlist/:bucketlist_id/items" component={BucketItems}/>
+            <Route component = {noMatch}/>
 
-        </div>
+        </Switch>
     </Router>,
     document.getElementById('root')
 );
