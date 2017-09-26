@@ -5,7 +5,7 @@ import { SocialIcon } from 'react-social-icons';
 class HomePage extends Component{
       render(){
           return(
-            <div>
+            <div id="main_div">
                 <Navigator />
                     <Jumbotron>
                         <p>welcome to my list of buckets click here to  <a href="/login">login</a></p>
