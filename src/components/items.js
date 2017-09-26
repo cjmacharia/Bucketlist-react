@@ -13,6 +13,8 @@ class BucketItems extends Component{
     constructor(props){
     super(props);
     this.handleupdate = this.handleupdate.bind(this);
+    this.handleAdditems = this.handleAdditems.bind(this);
+    this.getItems = this.getItems.bind(this);
     this.state = {
       items:[],
       name:'',
@@ -24,7 +26,8 @@ class BucketItems extends Component{
     }
     }
     handleAdditems(event){
-      var apiUrl = "https://andela-bucketlistapi.herokuapp.com/";
+      event.preventDefault();
+      var apiUrl = "http://localhost:5000/";
       var payload = {
         name: this.state.name,
       }
@@ -38,8 +41,9 @@ class BucketItems extends Component{
           }
       })
         .then(response => {
-          this.getItems()
+          console.log(">>>>>>>>>>>>>>>>>>")
           toast.success(response.data.message)
+          this.getItems()
           this.setState({addItemModal:false})
         })
         .catch(error => {
@@ -58,7 +62,7 @@ class BucketItems extends Component{
       }
       id = this.state.id
       axios ({
-        url: 'https://andela-bucketlistapi.herokuapp.com/api/bucketlists/'+this.props.match.params.bucketlist_id+'/items/'+id,
+        url: 'http://localhost:5000/api/bucketlists/'+this.props.match.params.bucketlist_id+'/items/'+id,
         method: 'PUT',
         data:payload,
         headers: {
@@ -82,7 +86,7 @@ class BucketItems extends Component{
     deleteHandler(event, id){
       event.preventDefault();
       axios({
-        url:'https://andela-bucketlistapi.herokuapp.com/api/bucketlists/'+this.props.match.params.bucketlist_id+'/items/'+id,
+        url:'http://localhost:5000/api/bucketlists/'+this.props.match.params.bucketlist_id+'/items/'+id,
         method:"DELETE",
         headers: {
           'Authorization' :"Bearer " +window.localStorage.getItem("token"),
@@ -103,9 +107,10 @@ class BucketItems extends Component{
       }
     }
 
-    getItems(){
+    getItems(event){
+        console.log("???????",window.localStorage.getItem("token"))
         axios({
-            url : 'https://andela-bucketlistapi.herokuapp.com/api/bucketlists/'+this.props.match.params.bucketlist_id+'/items',
+          url:'http://localhost:5000/api/bucketlists/'+this.props.match.params.bucketlist_id+'/items/',
             method: "get",
             headers: {
                 'Authorization' :"Bearer " +window.localStorage.getItem("token"),
@@ -117,10 +122,8 @@ class BucketItems extends Component{
             })
         )
         .catch((error)=>{
-            if (error.response.status === 401){
-                this.setState({redirect:true}) ;
-                toast.warning("your token has expired please login again ")
-            }
+
+
         })
     }
     componentWillMount(){

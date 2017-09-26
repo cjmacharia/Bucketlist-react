@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import  { Panel, Col, FormGroup,FormControl, Button}from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-import images from './images.svg';
 import Navigator from './navigate.js';
 import { toast} from 'react-toastify';
 import Toaster from '../containers/toaster.js';
@@ -17,7 +16,7 @@ class LoginPage extends Component {
   }
 
     handleClick(event) {
-      var apiUrl = "https://andela-bucketlistapi.herokuapp.com/";
+      var apiUrl = "http://localhost:5000/";
       var payload = {
         "email":this.state.email,
         "password":this.state.password
