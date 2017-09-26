@@ -28,15 +28,10 @@ class Mybuckets extends Component{
       this.getprevPage = this.getprevPage.bind(this);
       this.handleupdate = this.handleupdate.bind(this);
     }
-    // handleSearchSubmit=(e)=>{
-    //     this.setState({
-    //       search_text:event.target.value
-    //     })
-    //   }
-    
+
     handleAddBuckets(event) {
       event.preventDefault()
-      var apiUrl = "https://andela-bucketlistapi.herokuapp.com/";
+      var apiUrl = "http://localhost:5000/";
       var payload = {
         name:this.state.name,
       }
@@ -65,6 +60,25 @@ class Mybuckets extends Component{
     })
     }
 
+    handleSearch=(event)=>{
+      axios({
+        url : 'http://localhost:5000/api/bucketlists/'+"?q="+this.state.search_text,
+        method: "get",
+        headers: {
+          'Authorization' :"Bearer " +window.localStorage.getItem("token"),
+          'content_type':"application/json"
+        }
+      })
+      .then(response =>{
+        this.setState({
+          bucketlists:response.data,
+      })
+    })
+      .catch(error=>
+        console.log(JSON.stringify(error))
+    )
+    }
+
     handleupdate(event){
       this.setState({
         name: event.target.value
@@ -77,7 +91,7 @@ class Mybuckets extends Component{
         }
         id = this.state.id
         axios ({
-          url: `https://andela-bucketlistapi.herokuapp.com/api/bucketlists/${id}`,
+          url: `http://localhost:5000/api/bucketlists/${id}`,
           method: 'PUT',
           data:payload,
           headers: {
@@ -100,7 +114,7 @@ class Mybuckets extends Component{
     }
 
     handleAdditems(event, id){
-      var apiUrl = "https://andela-bucketlistapi.herokuapp.com";
+      var apiUrl = "http://localhost:5000/";
       var payload = {
         name: this.state.name,
       }
@@ -128,7 +142,7 @@ deleteHandler(event, id){
   id = this.state.id
   event.preventDefault();
     axios({
-      url: `https://andela-bucketlistapi.herokuapp.com/api/bucketlists/${id}`,
+      url: `http://localhost:5000/api/bucketlists/${id}`,
       method: "DELETE",
       headers: {
         'Authorization' :"Bearer " +window.localStorage.getItem("token"),
@@ -149,7 +163,7 @@ deleteHandler(event, id){
     getNextPage(event){
         event.preventDefault();
         axios({
-            url : 'https://andela-bucketlistapi.herokuapp.com/'+this.state.next_page,
+            url : 'http://localhost:5000/'+this.state.next_page,
             method: "GET",
             headers: {
                 'Authorization' :"Bearer " +window.localStorage.getItem("token"),
@@ -175,7 +189,7 @@ deleteHandler(event, id){
     getprevPage(event){
       event.preventDefault();
       axios({
-        url : 'https://andela-bucketlistapi.herokuapp.com/'+this.state.previous_page,
+        url : 'http://localhost:5000/'+this.state.previous_page,
         method: "GET",
         headers: {
           'Authorization' :"Bearer " +window.localStorage.getItem("token"),
@@ -192,7 +206,7 @@ deleteHandler(event, id){
 
     getBuckets(){
       axios({
-        url : 'https://andela-bucketlistapi.herokuapp.com/api/bucketlists/',
+        url : 'http://localhost:5000/api/bucketlists/',
         method: "get",
         headers: {
           'Authorization' :"Bearer " +window.localStorage.getItem("token"),
@@ -234,47 +248,60 @@ deleteHandler(event, id){
               <div className="container">
                   <Col md = { 6 }  mdPush = { 3 }>
                     <Toaster/>
-                      <Table responsive bordered className="sTable">
-                        <thead className="bg-info">
-                          <tr>
-                            <th>#</th>
-                            <th>Bucketname</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {
-                            bucketlists.map((bucketlist) => {
-                            return(
-                              <tr>
-                                <td><i>{++x}</i></td>
-                                <td>{bucketlist.name}</td>
-                                <td>
-                                  <a data-tip="React-tooltip" data-for='edit' onClick={(event=>this.setState({ editbucketModal: true, id: bucketlist.id , bname :bucketlist.name }))}  className="btn btn-warning"><i className="fa fa-pencil"></i></a>
-                                      <ReactTooltip id='edit' type='warning'>
-                                        <span>edit this bucketlist</span>
+                    {this.checkBuckets()?<div className="alert alert-danger">you currently have no buckets please click the add button to create buckets </div> :
+                      <div>
+                      <FormGroup>
+                        <InputGroup>
+                          <FormControl type="text" placeholder="search bucketlist" onChange={(event)=>this.setState({search_text:event.target.value})} required/>
+                            <InputGroup.Button><Button type="submit" bsStyle="primary" onClick={(event=>this.handleSearch(event))}>search</Button></InputGroup.Button>
+                        </InputGroup>
+                      </FormGroup>
+                        <Table responsive bordered className="sTable">
+                          <thead className="bg-info">
+                            <tr>
+                              <th>#</th>
+                              <th>Bucketname</th>
+                              <th>Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {
+                              bucketlists.map((bucketlist) => {
+                              return(
+                                <tr>
+                                  <td><i>{++x}</i></td>
+                                  <td>{bucketlist.name}</td>
+                                  <td>
+                                    <a data-tip="React-tooltip" data-for='edit' onClick={(event=>this.setState({ editbucketModal: true, id: bucketlist.id , bname :bucketlist.name }))}  className="btn btn-warning"><i className="fa fa-pencil"></i></a>
+                                        <ReactTooltip id='edit' type='warning'>
+                                          <span>edit this bucketlist</span>
+                                        </ReactTooltip>
+                                    <a  data-tip="React-tooltip" data-for='delete' onClick={(event=>this.setState({ deletebucketModal:true, id :bucketlist.id}))} className="btn btn-danger"><i className="fa fa-trash"></i></a>
+                                        <ReactTooltip id='delete' type='error'>
+                                          <span>delete this bucket</span>
+                                        </ReactTooltip>
+                                    <a data-tip="React-tooltip" data-for='view'href={"/api/bucketlist/"+bucketlist.id+"/items"} className="btn btn-info"><i className="fa fa-eye"></i> </a>
+                                        <ReactTooltip id='view' type='info'>
+                                          <span>view items in this bucket</span>
                                       </ReactTooltip>
-                                  <a  data-tip="React-tooltip" data-for='delete' onClick={(event=>this.setState({ deletebucketModal:true, id :bucketlist.id}))} className="btn btn-danger"><i className="fa fa-trash"></i></a>
-                                      <ReactTooltip id='delete' type='error'>
-                                        <span>delete this bucket</span>
-                                      </ReactTooltip>
-                                  <a data-tip="React-tooltip" data-for='view'href={"/api/bucketlist/"+bucketlist.id+"/items"} className="btn btn-info"><i className="fa fa-eye"></i> </a>
-                                      <ReactTooltip id='view' type='info'>
-                                        <span>view items in this bucket</span>
-                                     </ReactTooltip>
-                                </td>
-                              </tr>
+                                  </td>
+                                </tr>
 
-                            )
-                          })
-                          }
-                        </tbody>
-                      </Table>
+                              )
+                            })
+                            }
+
+                          </tbody>
+
+                        </Table>
+                      </div>
+                    }
                       <Pager>
                         <Pager.Item onClick={this.getprevPage}>Previous</Pager.Item>
                           {' '}
                         <Pager.Item onClick={this.getNextPage}>Next</Pager.Item>
                       </Pager>
+
                   </Col>
 
                   <Modal show={this.state.addBucketModal} onHide={this.close}>
