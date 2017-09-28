@@ -241,7 +241,7 @@ deleteHandler(event, id){
           <div>
             <Loggedin/>
             <Col md = { 10 }  mdPush = { 9 }>
-              <Button onClick={(event => this.setState({
+              <Button id="addbucket" onClick={(event => this.setState({
                 addBucketModal:true
                 }))}bsSize="small" bsStyle="primary">add</Button>
               </Col>

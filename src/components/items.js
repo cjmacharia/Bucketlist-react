@@ -108,7 +108,6 @@ class BucketItems extends Component{
     }
 
     getItems(event){
-        console.log("???????",window.localStorage.getItem("token"))
         axios({
           url:'http://localhost:5000/api/bucketlists/'+this.props.match.params.bucketlist_id+'/items/',
             method: "get",
