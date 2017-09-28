@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/cjmash/Bucketlist-react.svg?branch=ft-authorization-features)](https://travis-ci.org/cjmash/Bucketlist-react)
 
-#Getting Started
+# Getting Started
 
 BucketList-React
 
@@ -8,28 +8,28 @@ BucketList-React
 
  also add, create update and delete items in those bucketlists
 
-#Technologies
+# Technologies
 
 React
 
 React-bootstrap
 
-Getting Started
+# Getting Started
 
 These are instructions on how to set up the application on a local development machine.
 
 Clone the repository
 
-git clone https://github.com/cjmash/Bucketlist-react.git
+        git clone https://github.com/cjmash/Bucketlist-react.git
 
-#Install the dependencies
+# Install the dependencies
 
-npm install
+    npm install
 
-#Run the application
-npm start
+# Run the application
+    npm start
 
-#Features
+# Features
 
 Users can create accounts
 
@@ -39,17 +39,12 @@ Users can create,edit,view and delete bucket lists
 
 Users can create,edit,view and delete bucket list items
 
-#Testing
+# Testing
 
 To run tests
 
 Run tests
 
-// in root directory
-
-npm test
-Run tests with coverage
-
-// with coverage
+in root directory
 
 npm test -- --coverage
