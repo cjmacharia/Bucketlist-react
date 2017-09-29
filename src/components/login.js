@@ -44,10 +44,10 @@ class LoginPage extends Component {
         <Toaster/>
           <Panel header='login' bsStyle="warning">
             <FormGroup>
-              <FormControl type="email" placeholder= "email" onChange={(event)=>this.setState({email:event.target.value})} data-error= "this field can not be empty" required/>
+              <FormControl type="email" id = "email" placeholder= "email" onChange={(event)=>this.setState({email:event.target.value})} data-error= "this field can not be empty" required/>
             </FormGroup>
             <FormGroup>
-             <FormControl type="password" placeholder="Password" onChange={(event)=>this.setState({password:event.target.value})} required/>
+             <FormControl type="password" id = "password" placeholder="Password" onChange={(event)=>this.setState({password:event.target.value})} required/>
             </FormGroup>
             <Button bsStyle="success" onClick={(event=>this.handleClick(event))}>Login</Button>
           </Panel>

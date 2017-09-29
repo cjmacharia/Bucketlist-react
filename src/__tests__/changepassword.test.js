@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { expect } from 'chai';
 import Changepassword from '../components/changepassword';
 describe('<Changepassword/>', () => {
@@ -29,4 +29,38 @@ describe('<Changepassword/>', () => {
                 expect(wrapper.find('Button').length).to.equal(3)
         })
 
+        it('renders modal', () => {
+            const wrapper = shallow(<Changepassword/>);
+                expect(wrapper.find('Modal').length).to.equal(1)
+        })
+
+        it('change password value', ()=> {
+            const wrapper = mount(<Changepassword/>);
+            const input = wrapper.find('#password')
+            const target = {
+                value: "cjmash"
+            }
+            input.simulate('change', {target});
+            expect(wrapper.state().password).to.equal(target.value);
+        })
+
+        it('change confirm password value', ()=> {
+            const wrapper = mount(<Changepassword/>);
+            const input = wrapper.find('#cpassword')
+            const target = {
+                value: "cjmash"
+            }
+            input.simulate('change', {target});
+            expect(wrapper.state().cpassword).to.equal(target.value);
+        })
+
+        it('change confirm email value', ()=> {
+            const wrapper = mount(<Changepassword/>);
+            const input = wrapper.find('#email')
+            const target = {
+                value: "cjmash@gmail.com"
+            }
+            input.simulate('change', {target});
+            expect(wrapper.state().email).to.equal(target.value);
+        })
     })

@@ -18,7 +18,7 @@ class RegisterPage extends Component{
     }
 
     handleClick = (event) => {
-      var apiUrl = "https://andela-bucketlistapi.herokuapp.com/";
+      var apiUrl = "https://andela-bucketlistapi.herokuapp.com/" ;
       var payload = {
         "email":this.state.email,
         "username":this.state.username,
@@ -52,16 +52,16 @@ class RegisterPage extends Component{
             <Toaster/>
               <Panel header='Register' bsStyle="warning">
                 <FormGroup>
-                  <FormControl type="text" placeholder="username" onChange={(event)=>this.setState({username:event.target.value})}/>
+                  <FormControl type="text" id = "username" placeholder="username" onChange={(event)=>this.setState({username:event.target.value})}/>
                 </FormGroup>
                 <FormGroup>
-                  <FormControl type="email" placeholder="email" onChange={(event)=>this.setState({email:event.target.value})}/>
+                  <FormControl type="email" id = "email" placeholder="email" onChange={(event)=>this.setState({email:event.target.value})}/>
                 </FormGroup>
                   <FormGroup>
-                <FormControl type="password" placeholder="Password" onChange={(event)=>this.setState({password:event.target.value})}/>
+                <FormControl type="password" id = "password" placeholder="Password" onChange={(event)=>this.setState({password:event.target.value})}/>
                   </FormGroup>
                 <FormGroup>
-                  <FormControl type="password" placeholder="confirm Password" onChange={(event)=>this.setState({cpassword:event.target.value})}/>
+                  <FormControl type="password" id = "cpassword" placeholder="confirm Password" onChange={(event)=>this.setState({cpassword:event.target.value})}/>
                 </FormGroup>
                 <Button bsStyle="success" onClick={(event=>this.handleClick(event))}>Register</Button>
               </Panel>

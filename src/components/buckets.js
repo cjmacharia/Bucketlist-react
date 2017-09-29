@@ -117,8 +117,9 @@ class Mybuckets extends Component{
         name: this.state.name,
       }
       id = this.state.id
+
       axios({
-        url: `${apiUrl}api/bucketlists/${id}/items/`,
+        url: `${apiUrl}/api/bucketlists/${id}/items/`,
         data: payload,
         method: "post",
         headers: {
@@ -126,10 +127,12 @@ class Mybuckets extends Component{
           'content_type':"application/json"
           }
       })
+
         .then(response => {
           toast.success(response.data.message)
           this.setState({addItemModal:false})
         })
+
         .catch(error => {
           toast.error(error.response.data.error)
           this.setState({addItemModal:false})
@@ -147,11 +150,13 @@ deleteHandler(event, id){
         'content_type':"application/json"
       }
     })
+
     .then((response) => {
       this.getBuckets()
       this.setState({deletebucketModal:false})
       toast.error("Bucketlist successfully deleted")
     })
+
     .catch((error) => {
       toast.error(error.response.data.error)
       this.setState({deletebucketModal:false})
@@ -225,6 +230,22 @@ deleteHandler(event, id){
           toast.warning(error.response.data.error);
       })
     }
+    getItems(event){
+      axios({
+        url: apiUrl+'/api/bucketlists/'+this.props.match.params.bucketlist_id+'/items/',
+          method: "get",
+          headers: {
+              'Authorization' :"Bearer " +window.localStorage.getItem("token"),
+              'content_type':"application/json"
+          }
+      })
+      .then(response => this.setState({
+              items:response.data
+          })
+      )
+      .catch((error)=>{
+      })
+  }
 
   componentDidMount(){
     this.getBuckets()
@@ -236,6 +257,7 @@ deleteHandler(event, id){
         return <Redirect to = {{ pathname: '/login' }} />
       }
       let bucketlists = this.state.bucketlists
+      let getItems = this.getItems
       let x = 0
       return(
           <div>
@@ -280,7 +302,7 @@ deleteHandler(event, id){
                                         <ReactTooltip id='delete' type='error'>
                                           <span>delete this bucket</span>
                                         </ReactTooltip>
-                                    <a data-tip="React-tooltip" data-for='view'href={"/api/bucketlist/"+bucketlist.id+"/items"} className="btn btn-info"><i className="fa fa-eye"></i> </a>
+                                    <a data-tip="React-tooltip" data-for='view'href={"/api/bucketlist/"+bucketlist.id+"/items"} className="btn btn-info"><i className="fa fa-eye">{getItems.length}</i> </a>
                                         <ReactTooltip id='view' type='info'>
                                           <span>view items in this bucket</span>
                                       </ReactTooltip>
@@ -310,7 +332,7 @@ deleteHandler(event, id){
                     <Modal.Body>
                       <FormGroup>
                         <InputGroup>
-                          <FormControl type="text" placeholder="add a bucket name" onChange={(event)=>this.setState({name:event.target.value})} required/>
+                          <FormControl type="text"  id = "name" placeholder="add a bucket name" onChange={(event)=>this.setState({name:event.target.value})} required/>
                             <InputGroup.Button>
                               <Button bsStyle="primary" onClick={(event=>this.handleAddBuckets(event))}>Submit</Button>
                             </InputGroup.Button>

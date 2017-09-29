@@ -58,13 +58,13 @@ class Changepassword extends Component {
         <Toaster/>
           <Panel header='reset password' bsStyle="danger">
             <FormGroup>
-              <FormControl type="email" placeholder= "your email" onChange={(event)=>this.setState({email:event.target.value})} data-error= "this field can not be empty" required/>
+              <FormControl type="email" id = "email" placeholder= "your email" onChange={(event)=>this.setState({email:event.target.value})} data-error= "this field can not be empty" required/>
             </FormGroup>
             <FormGroup>
-             <FormControl type="password" placeholder="new Password" onChange={(event)=>this.setState({password:event.target.value})} required/>
+             <FormControl type="password" id = "password" placeholder="new Password" onChange={(event)=>this.setState({password:event.target.value})} required/>
             </FormGroup>
             <FormGroup>
-             <FormControl type="password" placeholder=" confirm Password" onChange={(event)=>this.setState({cpassword:event.target.value})} required/>
+             <FormControl type="password" id = "cpassword" placeholder=" confirm Password" onChange={(event)=>this.setState({cpassword:event.target.value})} required/>
             </FormGroup>
             <Button bsStyle="success" onClick={(event=>this.setState({changepasswordmodal:true}))}>submit</Button>
           </Panel>

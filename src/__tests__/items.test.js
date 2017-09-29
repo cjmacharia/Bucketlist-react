@@ -34,4 +34,5 @@ describe('<BucketItems/>', () => {
             const wrapper = shallow(<BucketItems {...props}/>);
             expect(wrapper.find('Button').length).to.equal(5)
         })
+       
 })

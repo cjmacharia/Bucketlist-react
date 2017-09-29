@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, configure } from 'enzyme';
+import { shallow, configure, mount } from 'enzyme';
 import { expect } from 'chai';
 import Mybuckets from '../components/buckets';
 describe('<Mybuckets/>', () => {
@@ -28,5 +28,5 @@ describe('<Mybuckets/>', () => {
                         const wrapper = shallow(<Mybuckets/>);
                             expect(wrapper.find('Button').length).to.equal(9)
                         })
-
+                        
     })
