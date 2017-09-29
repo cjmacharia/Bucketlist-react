@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import Loggedin from './nav-log.js';
 import { Redirect } from 'react-router-dom';
+import images from './images.png';
 import { toast} from 'react-toastify';
-import  { FormGroup,FormControl, Button, Col,InputGroup }from 'react-bootstrap';
+import  {  Panel, Col }from 'react-bootstrap';
 import axios from 'axios';
+import './style.css';
+
 import Toaster from '../containers/toaster.js';
 class Dashboard extends Component{
   constructor(props){
@@ -51,15 +54,18 @@ handleClick(event) {
             <div>
                 <Loggedin/>
                 <div className="container">
-                <Col md = {4} mdPush={4}>
-                    <Toaster/>
-                <h4>Add a bucket Name</h4>
-                <FormGroup>
-                <InputGroup>
-                <FormControl type="text" placeholder="bucketlist name" onChange={(event)=>this.setState({name:event.target.value})} required/>
-                <InputGroup.Button><Button type="submit" bsStyle="primary" onClick={(event=>this.handleClick(event))}>Submit</Button></InputGroup.Button>
-                </InputGroup>
-                </FormGroup>
+                <Col md = {6} mdPush={3} >
+                    <Panel className="panelstyle">
+                    <Col md = {9} mdPush={3} >
+                        <h3>Welcome to the bucketlist application </h3>
+                        <p></p>
+                        <h6>please click the button to add buckets </h6>
+                        </Col>
+                        <Col md = {6} mdPush={4} >
+                        <img src={images} href="/api/bucketlist/mybuckets" className="img"/>
+                        </Col>
+
+                    </Panel>
                 </Col>
                 </div>
                 </div>

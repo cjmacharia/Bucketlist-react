@@ -7,6 +7,7 @@ import ReactTooltip from 'react-tooltip';
 import './style.css';
 import { toast} from 'react-toastify';
 import Toaster from '../containers/toaster.js';
+const apiUrl = "https://andela-bucketlistapi.herokuapp.com";
 class Mybuckets extends Component{
     constructor(props){
       super(props);
@@ -17,7 +18,6 @@ class Mybuckets extends Component{
           showbuttons: false,
           addBucketModal: false,
           search_text:'',
-          search_results:[],
           deletebucketModal: false,
           addItemModal: false,
           editbucketModal: false,
@@ -31,12 +31,11 @@ class Mybuckets extends Component{
 
     handleAddBuckets(event) {
       event.preventDefault()
-      var apiUrl = "http://localhost:5000/";
       var payload = {
         name:this.state.name,
       }
       axios({
-          url : apiUrl+'api/bucketlists/',
+          url : apiUrl+'/api/bucketlists/',
           data: payload,
           method: "post",
           headers: {
@@ -62,7 +61,7 @@ class Mybuckets extends Component{
 
     handleSearch=(event)=>{
       axios({
-        url : 'http://localhost:5000/api/bucketlists/'+"?q="+this.state.search_text,
+        url : apiUrl+'/api/bucketlists/'+"?q="+this.state.search_text,
         method: "get",
         headers: {
           'Authorization' :"Bearer " +window.localStorage.getItem("token"),
@@ -76,7 +75,7 @@ class Mybuckets extends Component{
     })
       .catch(error=>
         console.log(JSON.stringify(error))
-    )
+      )
     }
 
     handleupdate(event){
@@ -91,7 +90,7 @@ class Mybuckets extends Component{
         }
         id = this.state.id
         axios ({
-          url: `http://localhost:5000/api/bucketlists/${id}`,
+          url: `${apiUrl}/api/bucketlists/${id}`,
           method: 'PUT',
           data:payload,
           headers: {
@@ -114,7 +113,6 @@ class Mybuckets extends Component{
     }
 
     handleAdditems(event, id){
-      var apiUrl = "http://localhost:5000/";
       var payload = {
         name: this.state.name,
       }
@@ -142,7 +140,7 @@ deleteHandler(event, id){
   id = this.state.id
   event.preventDefault();
     axios({
-      url: `http://localhost:5000/api/bucketlists/${id}`,
+      url: `${apiUrl}/api/bucketlists/${id}`,
       method: "DELETE",
       headers: {
         'Authorization' :"Bearer " +window.localStorage.getItem("token"),
@@ -163,7 +161,7 @@ deleteHandler(event, id){
     getNextPage(event){
         event.preventDefault();
         axios({
-            url : 'http://localhost:5000/'+this.state.next_page,
+            url : apiUrl+this.state.next_page,
             method: "GET",
             headers: {
                 'Authorization' :"Bearer " +window.localStorage.getItem("token"),
@@ -180,16 +178,18 @@ deleteHandler(event, id){
             .catch((error)=>
                 console.log(JSON.stringify(error)))
     }
+
     checkBuckets(){
       let bucketlists = this.state.bucketlists
       if(bucketlists<1){
         return("you have no items create some")
       }
     }
+
     getprevPage(event){
       event.preventDefault();
       axios({
-        url : 'http://localhost:5000/'+this.state.previous_page,
+        url : apiUrl+this.state.previous_page,
         method: "GET",
         headers: {
           'Authorization' :"Bearer " +window.localStorage.getItem("token"),
@@ -206,7 +206,7 @@ deleteHandler(event, id){
 
     getBuckets(){
       axios({
-        url : 'http://localhost:5000/api/bucketlists/',
+        url : apiUrl+'/api/bucketlists/',
         method: "get",
         headers: {
           'Authorization' :"Bearer " +window.localStorage.getItem("token"),
@@ -286,9 +286,8 @@ deleteHandler(event, id){
                                       </ReactTooltip>
                                   </td>
                                 </tr>
-
                               )
-                            })
+                              })
                             }
 
                           </tbody>
@@ -305,7 +304,7 @@ deleteHandler(event, id){
                   </Col>
 
                   <Modal show={this.state.addBucketModal} onHide={this.close}>
-                    <Modal.Header onClick={(event=>this.setState({ deletebucketModal: false }))} closeButton>
+                    <Modal.Header onClick={(event=>this.setState({ addBucketModal: false }))} closeButton>
                       <Modal.Title>Add a bucket </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -319,7 +318,7 @@ deleteHandler(event, id){
                       </FormGroup>
                     </Modal.Body>
                     <Modal.Footer>
-                      <Button onClick={(event=>this.setState({ addItemModal: false }))} >Close</Button>
+                      <Button onClick={(event=>this.setState({ addBucketModal: false }))} >Close</Button>
                     </Modal.Footer>
                   </Modal>
 

@@ -30,8 +30,8 @@ class  Loggedin extends Component{
 
                   <Nav pullRight>
                     <NavItem eventKey={1} href="/api/bucketlist/mybuckets">my buckets</NavItem>
-
-                    <NavItem eventKey={2} onClick={(event=>this.handleLogout(event))}>logout</NavItem>
+                    <NavItem eventKey={2} href="/api/bucketlist/changepassword">reset password</NavItem>
+                    <NavItem eventKey={3} onClick={(event=>this.handleLogout(event))}>logout</NavItem>
                   </Nav>
               </Navbar>
                     </div>

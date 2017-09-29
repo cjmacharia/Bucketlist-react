@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'react-toastify/dist/ReactToastify.min.css';
-import {ToastContainer, toast} from 'react-toastify';
+import {ToastContainer} from 'react-toastify';
 class Toaster extends Component{
 render(){
 return(

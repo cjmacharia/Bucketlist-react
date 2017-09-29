@@ -8,7 +8,7 @@ import ReactTooltip from 'react-tooltip';
 import './style.css';
 import axios from 'axios';
 import './style.css'
-
+const apiUrl = "https://andela-bucketlistapi.herokuapp.com";
 class BucketItems extends Component{
     constructor(props){
     super(props);
@@ -25,14 +25,14 @@ class BucketItems extends Component{
       bname:''
     }
     }
+
     handleAdditems(event){
       event.preventDefault();
-      var apiUrl = "http://localhost:5000/";
       var payload = {
         name: this.state.name,
       }
       axios({
-        url: apiUrl+"api/bucketlists/"+this.props.match.params.bucketlist_id+"/items/",
+        url: apiUrl+"/api/bucketlists/"+this.props.match.params.bucketlist_id+"/items/",
         data: payload,
         method: "post",
         headers: {
@@ -41,7 +41,6 @@ class BucketItems extends Component{
           }
       })
         .then(response => {
-          console.log(">>>>>>>>>>>>>>>>>>")
           toast.success(response.data.message)
           this.getItems()
           this.setState({addItemModal:false})
@@ -62,7 +61,7 @@ class BucketItems extends Component{
       }
       id = this.state.id
       axios ({
-        url: 'http://localhost:5000/api/bucketlists/'+this.props.match.params.bucketlist_id+'/items/'+id,
+        url: apiUrl+'/api/bucketlists/'+this.props.match.params.bucketlist_id+'/items/'+id,
         method: 'PUT',
         data:payload,
         headers: {
@@ -86,7 +85,7 @@ class BucketItems extends Component{
     deleteHandler(event, id){
       event.preventDefault();
       axios({
-        url:'http://localhost:5000/api/bucketlists/'+this.props.match.params.bucketlist_id+'/items/'+id,
+        url: apiUrl+'/api/bucketlists/'+this.props.match.params.bucketlist_id+'/items/'+id,
         method:"DELETE",
         headers: {
           'Authorization' :"Bearer " +window.localStorage.getItem("token"),
@@ -109,7 +108,7 @@ class BucketItems extends Component{
 
     getItems(event){
         axios({
-          url:'http://localhost:5000/api/bucketlists/'+this.props.match.params.bucketlist_id+'/items/',
+          url: apiUrl+'/api/bucketlists/'+this.props.match.params.bucketlist_id+'/items/',
             method: "get",
             headers: {
                 'Authorization' :"Bearer " +window.localStorage.getItem("token"),
@@ -213,9 +212,9 @@ render(){
                 <Modal.Title>Add an item to bucketlist </Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <FormGroup>
+                <FormGroup >
                   <InputGroup>
-                    <FormControl type="text" placeholder="item name" onChange={(event)=>this.setState({name:event.target.value})} required/>
+                    <FormControl id = "itemname" type="text" placeholder="item name" onChange={(event)=>this.setState({name:event.target.value})} required/>
                       <InputGroup.Button>
                         <Button bsStyle="primary" onClick={(event=>this.handleAdditems(event))}>Submit</Button>
                       </InputGroup.Button>

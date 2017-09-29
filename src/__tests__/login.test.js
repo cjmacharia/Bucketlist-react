@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, configure } from 'enzyme';
+import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import LoginPage from '../components/login';
 describe('<LoginPage/>', () => {
