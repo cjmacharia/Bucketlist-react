@@ -4,7 +4,8 @@ node_js:
 cache:
   directories:
   - node_modules
+  - src/containers
 script:
-  - npm test
+  - npm test --cover-package=components && coverage report
 after_success:
   - npm test -- --coverage

@@ -10,6 +10,7 @@ import  Mybuckets from './components/buckets';
 import Proutes from './containers/private.js';
 import RegisterPage from './components/register';
 import noMatch from './components/nomatch';
+import Changepassword from './components/changepassword';
 import BucketItems from './components/items';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
@@ -21,6 +22,7 @@ ReactDOM.render(
             <Route exact path="/login" component={LoginPage} />
             <Route exact path="/register" component={RegisterPage} />
             <Proutes exact path="/welcome" component={Dashboard} />
+            <Route exact path="/api/bucketlist/changepassword" component={Changepassword} />
             <Proutes exact path="/api/bucketlist/mybuckets" component={Mybuckets}/>
             <Proutes exact path="/api/bucketlist/" component={Mybuckets}/>
             <Proutes exact path="/api/bucketlist" component={Mybuckets}/>
