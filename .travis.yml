@@ -6,6 +6,6 @@ cache:
   - node_modules
   - src/containers
 script:
-  - npm test --cover-package=src/components
+  - npm test --with-coverage --cover-package = src/components
 after_success:
-  - npm test -- --coverage
+  -coveralls
