@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
-import HomePage from './components/home';
 import LoginPage from './components/login';
 import  Mybuckets from './components/buckets';
 import Proutes from './containers/private.js';
@@ -17,7 +16,7 @@ import registerServiceWorker from './registerServiceWorker';
 ReactDOM.render(
     <Router>
         <Switch>
-            <Route exact path="/" component={HomePage} />
+            <Route exact path="/" component={RegisterPage} />
             <Route exact path="/login" component={LoginPage} />
             <Route exact path="/register" component={RegisterPage} />
             <Route exact path="/api/bucketlist/changepassword" component={Changepassword} />
