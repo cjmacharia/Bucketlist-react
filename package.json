@@ -6,6 +6,8 @@
     "axios": "^0.16.2",
     "bootstrap": "^3.3.7",
     "bootstrap-validator": "^0.11.9",
+    "coverage": "^0.0.0",
+    "coveralls": "^3.0.0",
     "enzyme-adapter-react-15": "^1.0.0",
     "jest-cli": "^21.1.0",
     "jest-enzyme": "4.0.0",
