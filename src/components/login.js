@@ -35,7 +35,7 @@ class LoginPage extends Component {
   render(){
     const redirect = this.state.redirect
     if (redirect) {
-      return <Redirect to = {{pathname: '/welcome'}} />
+      return <Redirect to = {{pathname: '/api/bucketlist/mybuckets'}} />
     }
     return(
       <div>

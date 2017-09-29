@@ -4,7 +4,6 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 import HomePage from './components/home';
-import Dashboard from './components/welcome';
 import LoginPage from './components/login';
 import  Mybuckets from './components/buckets';
 import Proutes from './containers/private.js';
@@ -21,7 +20,6 @@ ReactDOM.render(
             <Route exact path="/" component={HomePage} />
             <Route exact path="/login" component={LoginPage} />
             <Route exact path="/register" component={RegisterPage} />
-            <Proutes exact path="/welcome" component={Dashboard} />
             <Route exact path="/api/bucketlist/changepassword" component={Changepassword} />
             <Proutes exact path="/api/bucketlist/mybuckets" component={Mybuckets}/>
             <Proutes exact path="/api/bucketlist/" component={Mybuckets}/>
