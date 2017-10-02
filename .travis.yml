@@ -8,4 +8,4 @@ cache:
 script:
   - npm test
 after_success:
-  - npm test -- --coverage
+  - npm run coveralls
