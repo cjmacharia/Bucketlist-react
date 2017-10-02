@@ -37,7 +37,9 @@ class RegisterPage extends Component{
             // console.log(JSON.stringify(response))
         })
         .catch((error)=> {
+          if(error.response){
           toast.error(error.response.data.error)
+          }
           })
     }
   render(){

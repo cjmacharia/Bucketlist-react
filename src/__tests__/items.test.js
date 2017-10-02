@@ -8,7 +8,6 @@ describe('<BucketItems/>', () => {
             global.props = {
                 match:{
                     params: {bucketlist_id:2}
-
                 }
             }
          })
@@ -35,7 +34,7 @@ describe('<BucketItems/>', () => {
             expect(wrapper.find('Button').length).to.equal(5)
         })
 
-        const mockbuckets =
+        const mockitems =
         {
             'items':[
                 {
@@ -53,7 +52,7 @@ describe('<BucketItems/>', () => {
 
         it ('should render buckets', ()=> {
         const wrapper = mount(<BucketItems  {...props}/>);
-        wrapper.setState(mockbuckets)
+        wrapper.setState(mockitems)
         const bucket = wrapper.find('.item')
         expect(bucket.length).to.equal(1);
     })

@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow , mount } from 'enzyme';
 import { expect } from 'chai';
 import LoginPage from '../components/login';
+import sinon from 'sinon'
 describe('<LoginPage/>', () => {
 
         it('renders col', () => {
@@ -48,4 +49,14 @@ describe('<LoginPage/>', () => {
             input.simulate('change', {target});
             expect(wrapper.state().password).to.equal(target.value);
         })
+        
+        it ('calls the handleClick function onclick', ()=>{
+            const spy = sinon.spy()
+            LoginPage.prototype.handleClick = spy
+            const wrapper = shallow(<LoginPage />)
+            wrapper.find('Button').simulate('click')
+            expect(spy.calledOnce).to.equal(true)
+
+        })
+
     })

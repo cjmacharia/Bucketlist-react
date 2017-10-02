@@ -276,8 +276,8 @@ deleteHandler(event, id){
                       <div>
                       <FormGroup>
                         <InputGroup>
-                          <FormControl type="text" placeholder="search bucketlist" onChange={(event)=>this.setState({search_text:event.target.value})} required/>
-                            <InputGroup.Button><Button type="submit" bsStyle="primary" onClick={(event=>this.handleSearch(event))}>search</Button></InputGroup.Button>
+                          <FormControl type="text" id = "search"  placeholder="search bucketlist" onChange={(event)=>this.setState({search_text:event.target.value})} required/>
+                            <InputGroup.Button><Button type="submit" className = "btn" bsStyle="primary" onClick={(event=>this.handleSearch(event))}>search</Button></InputGroup.Button>
                         </InputGroup>
                       </FormGroup>
                         <Table responsive bordered className="sTable">
@@ -347,7 +347,7 @@ deleteHandler(event, id){
                     </Modal.Footer>
                   </Modal>
 
-                  <Modal show={this.state.addItemModal} onHide={this.close}>
+                  <Modal className="modal" show={this.state.addItemModal} onHide={this.close}>
                     <Modal.Header onClick={(event=>this.setState({ deletebucketModal: false }))} closeButton>
                       <Modal.Title>Add an item to bucketlist </Modal.Title>
                     </Modal.Header>

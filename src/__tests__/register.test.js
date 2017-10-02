@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow, configure , mount} from 'enzyme';
 import { expect } from 'chai';
+import sinon from 'sinon'
 import RegisterPage from '../components/register';
 describe('<RegisterPage/>', () => {
 
@@ -60,9 +61,18 @@ describe('<RegisterPage/>', () => {
                         const wrapper = mount(<RegisterPage/>);
                         const input = wrapper.find('#email')
                         const target = {
-                            value: "cjmash"
+                            value: "cjmash@gmail.com"
                         }
                         input.simulate('change', {target});
                         expect(wrapper.state().email).to.equal(target.value);
+                    })
+
+                    it ('calls the handleClick function onclick', ()=>{
+                        const spy = sinon.spy()
+                        RegisterPage.prototype.handleClick = spy
+                        const wrapper = shallow(<RegisterPage />)
+                        wrapper.find('Button').simulate('click')
+                        expect(spy.calledOnce).to.equal(false)
+
                     })
     })

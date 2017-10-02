@@ -78,7 +78,7 @@ class Changepassword extends Component {
                         <InputGroup>
                         <h5>are you sure you want to reset your password</h5>
                             <InputGroup.Button>
-                              <Button bsStyle="primary" onClick={(event=>this.handleClick(event))}>Submit</Button>
+                              <Button bsStyle="primary" className="button" onClick={(event=>this.handleClick(event))}>Submit</Button>
                             </InputGroup.Button>
                         </InputGroup>
                       </FormGroup>

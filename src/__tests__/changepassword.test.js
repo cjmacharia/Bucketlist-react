@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { expect } from 'chai';
+import sinon from 'sinon'
 import Changepassword from '../components/changepassword';
 describe('<Changepassword/>', () => {
 
@@ -62,5 +63,12 @@ describe('<Changepassword/>', () => {
             }
             input.simulate('change', {target});
             expect(wrapper.state().email).to.equal(target.value);
+        })
+        it('submits onclick works', () =>{
+            const spy = sinon.spy()
+            Changepassword.prototype.handleClick = spy
+            const wrapper = shallow(<Changepassword/>)
+            wrapper.find('.button').simulate('click')
+            expect(spy.calledOnce).to.equal(true)
         })
     })
