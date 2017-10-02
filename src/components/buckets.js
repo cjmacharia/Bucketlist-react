@@ -227,7 +227,9 @@ deleteHandler(event, id){
         })
       })
       .catch((error) => {
+        if(error.response){
           toast.warning(error.response.data.error);
+        }
       })
     }
     getItems(event){
@@ -290,7 +292,8 @@ deleteHandler(event, id){
                             {
                               bucketlists.map((bucketlist) => {
                               return(
-                                <tr>
+
+                                <tr className="buckets">
                                   <td><i>{++x}</i></td>
                                   <td>{bucketlist.name}</td>
                                   <td>

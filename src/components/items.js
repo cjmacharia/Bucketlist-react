@@ -151,7 +151,7 @@ render(){
               <Toaster/>
               {this.checkItems() ? <div className="alert alert-danger">you currently have no items please click the add button to create items </div> :<Table responsive bordered className="sTable">
                   <thead className="bg-success">
-                    <tr>
+                    <tr className="item">
                       <th>#</th>
                       <th>Item</th>
                       <th>Action</th>

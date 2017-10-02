@@ -34,5 +34,28 @@ describe('<BucketItems/>', () => {
             const wrapper = shallow(<BucketItems {...props}/>);
             expect(wrapper.find('Button').length).to.equal(5)
         })
-       
+
+        const mockbuckets =
+        {
+            'items':[
+                {
+                  "bucketlist_id": 19,
+                  "date_created": "Mon, 02 Oct 2017 08:46:47 GMT",
+                  "date_modified": "Mon, 02 Oct 2017 08:46:47 GMT",
+                  "id": 9,
+                  "name": "mash"
+                }
+              ]
+
+          }
+    describe ('Mybuckets', ()=>
+    {
+
+        it ('should render buckets', ()=> {
+        const wrapper = mount(<BucketItems  {...props}/>);
+        wrapper.setState(mockbuckets)
+        const bucket = wrapper.find('.item')
+        expect(bucket.length).to.equal(1);
+    })
+    })
 })
