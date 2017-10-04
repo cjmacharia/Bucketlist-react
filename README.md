@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/cjmash/Bucketlist-react.svg?branch=ft-authorization-features)](https://travis-ci.org/cjmash/Bucketlist-react)  [![Coverage Status](https://coveralls.io/repos/github/cjmash/Bucketlist-react/badge.svg?branch=ft-authorization-features)](https://coveralls.io/github/cjmash/Bucketlist-react?branch=ft-authorization-features)
+[![Build Status](https://travis-ci.org/cjmash/Bucketlist-react.svg?branch=ft-authorization-features)](https://travis-ci.org/cjmash/Bucketlist-react)  [![Coverage Status](https://coveralls.io/repos/github/cjmash/Bucketlist-react/badge.svg?branch=ft-authorization-features)](https://coveralls.io/github/cjmash/Bucketlist-react?branch=ft-authorization-features) [![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/codeclimate/codeclimate)
 
 # Getting Started
 
@@ -12,11 +12,14 @@ BucketList-React
 
  https://reactbucketlist.herokuapp.com/
 
+
+
 # Technologies
 
 React
 
 React-bootstrap
+![image](images/delete.42.png)
 
 # Getting Started
 
@@ -38,11 +41,12 @@ Clone the repository
 Users can create accounts
 
 Users can sigin and signout of application
-
+![image](images/reg.png)
 Users can create,edit,view and delete bucket lists
+![image](images/edit.03.png)
 
 Users can create,edit,view and delete bucket list items
-
+![image](images/delete.42.png)
 # Testing
 
 To run tests
