@@ -2,19 +2,19 @@ import React, { Component } from 'react';
 import  { Panel, Col, FormGroup,FormControl, Button}from 'react-bootstrap';
 import { Redirect } from 'react-router-dom'
 import axios from 'axios';
-import { toast} from 'react-toastify';
+import {toast} from 'react-toastify';
 import Toaster from '../containers/toaster.js';
 import Navigator from './navigate.js'
 class RegisterPage extends Component{
-    constructor(props){
-        super(props)
-        this.state = {
-          username: '',
-          email: '',
-          redirect: false,
-          password: '',
-          cpassword: ''
-        }
+  constructor(props){
+    super(props)
+      this.state = {
+        username: '',
+        email: '',
+        redirect: false,
+        password: '',
+        cpassword: ''
+      }
     }
 
     handleClick = (event) => {
@@ -30,7 +30,7 @@ class RegisterPage extends Component{
             return 0;
         }
 
-        axios.post(apiUrl+'api/bucketlists/auth/register/', payload)
+    axios.post(apiUrl+'api/bucketlists/auth/register/', payload)
         .then((response)=>{
           toast.success(response.data.message)
           this.setState({redirect:true})
