@@ -1,0 +1,20 @@
+*{
+    border-radius:0 !important;
+}
+.sTable .btn{
+  font-size: 12px;
+  padding: 1px 20px;
+  margin-right: 10px;
+}
+.sTable .fa{
+    margin-right: 5px;
+}
+.sNav{
+    border-radius:0
+}
+.panelstyle{
+    margin-top: 100px;
+}
+.panelstyle .img{
+    height:50px
+}
