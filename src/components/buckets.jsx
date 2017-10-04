@@ -27,6 +27,7 @@ class Mybuckets extends Component{
       this.getNextPage = this.getNextPage.bind(this);
       this.getprevPage = this.getprevPage.bind(this);
       this.handleupdate = this.handleupdate.bind(this);
+      this.deleteHandler = this.deleteHandler.bind(this);
     }
 
     handleAddBuckets(event) {
@@ -79,12 +80,14 @@ class Mybuckets extends Component{
     }
 
     handleupdate(event){
+      event.preventDefault()
       this.setState({
         name: event.target.value
       })
     }
 
     updateBucket(event, id){
+      event.preventDefault()
         let payload = {
           name: this.state.name
         }
@@ -140,6 +143,7 @@ class Mybuckets extends Component{
     }
 
 deleteHandler(event, id){
+  event.preventDefault()
   id = this.state.id
   event.preventDefault();
     axios({
@@ -201,10 +205,13 @@ deleteHandler(event, id){
           'content_type':"application/json"
         }
       })
-        .then((response) =>  this.setState({
+        .then((response) => {  this.setState({
           bucketlists:response.data.bucketlists,
-          previous_page:response.data.previous_page
-        }))
+          previous_page:response.data.previous_page,
+          next_page:response.data.next_page,
+
+        })
+      })
         .catch((error) =>
             console.log(JSON.stringify(error)))
    }
@@ -271,7 +278,7 @@ deleteHandler(event, id){
               </Col>
               <div className="container">
                   <Col md = { 6 }  mdPush = { 3 }>
-                    <Toaster/>
+                    <Toaster className="toasts"/>
                     {this.checkBuckets()?<div className="alert alert-danger">you currently have no buckets please click the add button to create buckets </div> :
                       <div>
                       <FormGroup>
@@ -333,14 +340,16 @@ deleteHandler(event, id){
                       <Modal.Title>Add a bucket </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
+                    <form onSubmit = {event=>this.handleAddBuckets(event)}>
                       <FormGroup>
                         <InputGroup>
                           <FormControl type="text"  id = "name" placeholder="add a bucket name" onChange={(event)=>this.setState({name:event.target.value})} required/>
                             <InputGroup.Button>
-                              <Button bsStyle="primary" onClick={(event=>this.handleAddBuckets(event))}>Submit</Button>
+                              <Button type = "submit" bsStyle="primary">Submit</Button>
                             </InputGroup.Button>
                         </InputGroup>
                       </FormGroup>
+                      </form>
                     </Modal.Body>
                     <Modal.Footer>
                       <Button onClick={(event=>this.setState({ addBucketModal: false }))} >Close</Button>
@@ -352,14 +361,16 @@ deleteHandler(event, id){
                       <Modal.Title>Add an item to bucketlist </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
+                      <form onSubmit={(event=>this.handleAdditems(event))}>
                       <FormGroup>
                         <InputGroup>
                           <FormControl type="text" placeholder="item name" onChange={(event)=>this.setState({name:event.target.value})} required/>
                             <InputGroup.Button>
-                              <Button bsStyle="primary" onClick={(event=>this.handleAdditems(event))}>Submit</Button>
+                              <Button bsStyle="primary" type = "submit">Submit</Button>
                             </InputGroup.Button>
                         </InputGroup>
                       </FormGroup>
+                      </form>
                     </Modal.Body>
                     <Modal.Footer>
                       <Button onClick={(event=>this.setState({ addItemModal: false }))} >Close</Button>
@@ -371,12 +382,14 @@ deleteHandler(event, id){
                       <Modal.Title>edit this bucket </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
+                      <form onSubmit = {(event=>this.updateBucket(event))}>
                       <FormGroup>
                         <InputGroup>
                           <FormControl  type="text" defaultValue ={this.state.bname} onChange={this.handleupdate} required/>
-                          <InputGroup.Button><Button bsStyle="primary" onClick={(event=>this.updateBucket(event))}>Submit</Button></InputGroup.Button>
+                          <InputGroup.Button><Button bsStyle="primary" type= "submit">Submit</Button></InputGroup.Button>
                         </InputGroup>
                       </FormGroup>
+                      </form>
                       </Modal.Body>
                     <Modal.Footer>
                       <Button onClick={(event=>this.setState({ editbucketModal: false }))} >Close</Button>
@@ -388,16 +401,19 @@ deleteHandler(event, id){
                       <Modal.Title>delete this bucket </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
+                    <form  onSubmit = {(event=>this.deleteHandler(event))}>
                       <FormGroup>
                         <InputGroup>
                         <h5>are you sure you want to delete this bucket</h5>
-                          <InputGroup.Button><Button bsStyle="danger" onClick={(event=>this.deleteHandler(event))}>delete</Button></InputGroup.Button>
+                          <InputGroup.Button><Button bsStyle="danger" type= "submit">delete</Button></InputGroup.Button>
                         </InputGroup>
                       </FormGroup>
+                      </form>
                       </Modal.Body>
                     <Modal.Footer>
                       <Button onClick={(event=>this.setState({ deletebucketModal: false }))} >Close</Button>
                     </Modal.Footer>
+
                   </Modal>
             </div>
           </div>
