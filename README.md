@@ -12,11 +12,14 @@ BucketList-React
 
  https://reactbucketlist.herokuapp.com/
 
+
+
 # Technologies
 
 React
 
 React-bootstrap
+![image](images/delete.42.png)
 
 # Getting Started
 
@@ -38,11 +41,12 @@ Clone the repository
 Users can create accounts
 
 Users can sigin and signout of application
-
+![image](images/reg.png)
 Users can create,edit,view and delete bucket lists
+![image](images/edit.03.png)
 
 Users can create,edit,view and delete bucket list items
-
+![image](images/delete.42.png)
 # Testing
 
 To run tests
