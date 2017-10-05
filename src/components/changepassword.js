@@ -39,7 +39,9 @@ class Changepassword extends Component {
         this.setState({redirect:true})
       })
       .catch((error) => {
+        if(error.response){
         toast.error(error.response.data.error);
+        }
         this.setState({
             changepasswordmodal:false
         })

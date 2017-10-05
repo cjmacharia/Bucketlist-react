@@ -56,11 +56,13 @@ class Mybuckets extends Component{
       this.setState({
         addBucketModal:false
       })
+      if(error.response){
       toast.error(error.response.data.error);
+      }
     })
     }
 
-    handleSearch=(event)=>{
+    handleSearch(event){
       axios({
         url : apiUrl+'/api/bucketlists/'+"?q="+this.state.search_text,
         method: "get",
@@ -74,8 +76,11 @@ class Mybuckets extends Component{
           bucketlists:response.data,
       })
     })
-      .catch(error=>
+      .catch((error)=>{
+        if(error.response){
         console.log(JSON.stringify(error))
+        }
+      }
       )
     }
 
@@ -110,7 +115,9 @@ class Mybuckets extends Component{
             toast.success(response.data.message)
           })
           .catch((xhr) => {
+            if(xhr.response){
             toast.error(xhr.response.data.error)
+            }
             this.setState({editbucketModal:false})
           })
     }
@@ -137,7 +144,9 @@ class Mybuckets extends Component{
         })
 
         .catch(error => {
+          if(error.response){
           toast.error(error.response.data.error)
+          }
           this.setState({addItemModal:false})
         })
     }
@@ -162,7 +171,9 @@ deleteHandler(event, id){
     })
 
     .catch((error) => {
+      if(error.response){
       toast.error(error.response.data.error)
+      }
       this.setState({deletebucketModal:false})
     })
     }

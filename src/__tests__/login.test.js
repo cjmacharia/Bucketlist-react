@@ -58,7 +58,12 @@ describe('<LoginPage/>', () => {
     input.simulate('change', { target });
     expect(wrapper.state().password).toEqual(target.value);
   });
-
+  it('calls the handle handleclick methods', () => {
+    sinon.spy(LoginPage.prototype, 'handleClick')
+    const wrapper = mount(<LoginPage />)
+    wrapper.instance().handleClick({preventDefault: () =>{} })
+    expect(LoginPage.prototype.handleClick.called).toEqual(true)
+  });
   it('calls the handleClick function onclick', () => {
     const spy = sinon.spy();
     LoginPage.prototype.handleClick = spy;

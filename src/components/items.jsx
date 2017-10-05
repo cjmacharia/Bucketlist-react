@@ -92,7 +92,7 @@ class BucketItems extends Component {
       url: `${apiUrl}api/bucketlists/${this.props.match.params.bucketlist_id}/items/${id}`,
       method: 'DELETE',
       headers: {
-        Authorization: `Bearer ${ window.localStorage.getItem('token')}`,
+        Authorization: `Bearer ${window.localStorage.getItem('token')}`,
         content_type: 'application/json',
       },
     })
@@ -171,7 +171,7 @@ class BucketItems extends Component {
               </thead>
               <tbody>
                 {items.map(item => (
-                    <tr>
+                  <tr>
                     <td>{++x}</td>
                     <td>{item.name}</td>
                     <td>
@@ -184,9 +184,9 @@ class BucketItems extends Component {
                           bname: item.name,
                         }))}
                         className="btn btn-warning fa fa-pencil"
-                       />
+                      />
                       <ReactTooltip id="edit" type="warning">
-                        <span>edit this item</span>
+                  <span>edit this item</span>
                       </ReactTooltip>
 
                       <a
@@ -198,7 +198,7 @@ class BucketItems extends Component {
                           id: item.id,
                         }))}
                         className="btn btn-danger fa fa-trash"
-                      ></a>
+                      />
                       <ReactTooltip id="delete" type="error">
                         <span>Delete this item</span>
                       </ReactTooltip>
@@ -217,13 +217,13 @@ class BucketItems extends Component {
             <Modal.Body>
               <form onSubmit={(event => this.updateItem(event))}>
                 <FormGroup>
-                    <InputGroup>
+                  <InputGroup>
                     <FormControl type="text" defaultValue={this.state.bname} onChange={this.handleupdate} required />
                     <InputGroup.Button>
                       <Button bsStyle="primary" type="submit">Submit</Button>
                     </InputGroup.Button>
                   </InputGroup>
-                  </FormGroup>
+                </FormGroup>
               </form>
             </Modal.Body>
             <Modal.Footer>
@@ -238,17 +238,17 @@ class BucketItems extends Component {
             <Modal.Body>
               <form id="formq"onSubmit={(event => this.handleAdditems(event))}>
                 <FormGroup >
-                    <InputGroup>
+                  <InputGroup>
                     <FormControl id="item" type="text" placeholder="item name" onChange={event => this.setState({ name: event.target.value })} required />
                     <InputGroup.Button>
                       <Button bsStyle="primary" type="submit">Submit</Button>
                     </InputGroup.Button>
                   </InputGroup>
-                  </FormGroup>
+                </FormGroup>
               </form>
             </Modal.Body>
             <Modal.Footer>
-              <Button onClick={(event => this.setState({ addItemModal: false }))} >Close</Button>
+              <Button id="addItemModal"onClick={(event => this.setState({ addItemModal: false }))} >Close</Button>
             </Modal.Footer>
           </Modal>
           <Modal show={this.state.deleteItemModal} onHide={this.close}>
@@ -256,7 +256,7 @@ class BucketItems extends Component {
               <Modal.Title>delete this item </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <form onSubmit={(event => this.deleteHandler(event))} >
+              <form onSubmit={(event => this.deleteHandler(event))} >
                 <FormGroup>
                   <InputGroup>
                     <h5>are you sure you want to delete this item</h5>
@@ -264,10 +264,10 @@ class BucketItems extends Component {
                   </InputGroup>
                 </FormGroup>
               </form>
-              </Modal.Body>
+            </Modal.Body>
             <Modal.Footer>
-                <Button onClick={(event => this.setState({ deleteItemModal: false }))} >Close</Button>
-              </Modal.Footer>
+              <Button id="deleteItemModal"onClick={(event => this.setState({ deleteItemModal: false }))} >Close</Button>
+            </Modal.Footer>
           </Modal>
         </div>
 
