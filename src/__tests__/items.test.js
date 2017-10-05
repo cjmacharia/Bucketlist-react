@@ -4,7 +4,7 @@ import BucketItems from '../components/items';
 import renderer from 'react-test-renderer';
 import toJson from 'enzyme-to-json';
 import moxios from 'moxios';
-import { sinon, spy } from 'sinon';
+import sinon from 'sinon';
 import axios from 'axios';
 
 const mockitems =
@@ -59,6 +59,32 @@ describe('<BucketItems/>', () => {
     expect(wrapper.find('Button').length).toEqual(7);
   });
 
+  it('calls the handle add items methods', () => {
+    sinon.spy(BucketItems.prototype, 'handleAdditems')
+    const wrapper = mount(<BucketItems {...props}/>)
+    wrapper.instance().handleAdditems({preventDefault: () =>{} })
+    expect(BucketItems.prototype.handleAdditems.called).toEqual(true)
+  });
+  it('calls the handle update items methods', () => {
+    sinon.spy(BucketItems.prototype, 'updateItem')
+    const wrapper = mount(<BucketItems {...props}/>)
+    wrapper.instance().updateItem({preventDefault: () =>{} })
+    expect(BucketItems.prototype.updateItem.called).toEqual(true)
+  });
+  it('calls the handle check items methods', () => {
+    sinon.spy(BucketItems.prototype, 'checkItems')
+    const wrapper = mount(<BucketItems {...props}/>)
+    wrapper.instance().checkItems({preventDefault: () =>{} })
+    expect(BucketItems.prototype.checkItems.called).toEqual(true)
+
+  });
+  it('calls the delete handler methods', () => {
+    sinon.spy(BucketItems.prototype, 'deleteHandler')
+    const wrapper = mount(<BucketItems {...props}/>)
+    wrapper.instance().deleteHandler({preventDefault: () =>{} })
+    expect(BucketItems.prototype.deleteHandler.called).toEqual(true)
+
+  });
   it('opens modal on click', () => {
     const wrapper = mount(<BucketItems {...props} />);
     expect(wrapper.state().deleteItemModal).toEqual(false);

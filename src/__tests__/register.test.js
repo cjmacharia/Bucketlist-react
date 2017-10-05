@@ -77,11 +77,17 @@ describe('<RegisterPage/>', () => {
     expect(wrapper.state().email).toEqual(target.value);
   });
 
-  it ('calls the handleClick function onclick', () => {
+  it('calls the handle handleclick methods', () => {
+    sinon.spy(RegisterPage.prototype, 'handleClick')
+    const wrapper = mount(<RegisterPage />)
+    wrapper.instance().handleClick({preventDefault: () =>{} })
+    expect(RegisterPage.prototype.handleClick.called).toEqual(true)
+  });
+  it('calls the handleClick function onclick', () => {
     const spy = sinon.spy();
     RegisterPage.prototype.handleClick = spy;
     const wrapper = shallow(<RegisterPage />);
     wrapper.find('Button').simulate('click');
-    expect(spy.calledOnce).toEqual(false);
+    expect(spy.calledOnce).toEqual(true);
   });
 });

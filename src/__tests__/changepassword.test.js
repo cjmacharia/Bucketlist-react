@@ -8,10 +8,15 @@ describe('<Changepassword/>', () => {
   it('renders page without crashing ', () => {
     const rendered = renderer.create(
       <Changepassword />,
-      );
+    );
     expect(rendered.toJSON()).toMatchSnapshot();
-  })
-
+  });
+  it('calls the handle handleclick methods', () => {
+    sinon.spy(Changepassword.prototype, 'handleClick');
+    const wrapper = mount(<Changepassword />);
+    wrapper.instance().handleClick({ preventDefault: () => {} });
+    expect(Changepassword.prototype.handleClick.called).toEqual(true);
+  });
   it('renders col', () => {
     const wrapper = shallow(<Changepassword />);
     expect(wrapper.find('Col').length).toEqual(1);
@@ -46,7 +51,7 @@ describe('<Changepassword/>', () => {
     const wrapper = mount(<Changepassword />);
     const input = wrapper.find('#password');
     const target = {
-      value: 'cjmash'
+      value: 'cjmash',
     };
     input.simulate('change', { target });
     expect(wrapper.state().password).toEqual(target.value);

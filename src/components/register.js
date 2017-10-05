@@ -17,7 +17,7 @@ class RegisterPage extends Component{
       }
     }
 
-    handleClick = (event) => {
+    handleClick(event) {
       var apiUrl = "https://andela-bucketlistapi.herokuapp.com/" ;
       var payload = {
         "email":this.state.email,
