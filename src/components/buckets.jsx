@@ -311,7 +311,7 @@ deleteHandler(event, id){
                               bucketlists.map((bucketlist) => {
                               return(
 
-                                <tr className="buckets">
+                                <tr className="buckets" key = {bucketlist}>
                                   <td><i>{++x}</i></td>
                                   <td>{bucketlist.name}</td>
                                   <td>
