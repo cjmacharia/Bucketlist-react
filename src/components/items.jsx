@@ -171,7 +171,7 @@ class BucketItems extends Component {
               </thead>
               <tbody>
                 {items.map(item => (
-                  <tr>
+                  <tr key={item.id}>
                     <td>{++x}</td>
                     <td>{item.name}</td>
                     <td>

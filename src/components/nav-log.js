@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 class Loggedin extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class Loggedin extends Component {
   render() {
     const redirect = this.state.redirect;
     if (redirect) {
-      return <Link to={{pathname: '/login'}} />
+      return <Redirect to={'/login'} />;
     }
     return (
       <div className="HomePage">

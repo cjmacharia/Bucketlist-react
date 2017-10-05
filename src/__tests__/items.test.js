@@ -85,6 +85,7 @@ describe('<BucketItems/>', () => {
     expect(BucketItems.prototype.deleteHandler.called).toEqual(true)
 
   });
+
   it('opens modal on click', () => {
     const wrapper = mount(<BucketItems {...props} />);
     expect(wrapper.state().deleteItemModal).toEqual(false);
