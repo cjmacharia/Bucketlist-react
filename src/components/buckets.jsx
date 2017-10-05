@@ -317,7 +317,7 @@ bsStyle="primary"
                     {
                       bucketlists.map((bucketlist) => (
 
-                                <tr className="buckets" key = {bucketlist}>
+                                <tr className="buckets" key = {bucketlist.id}>
                                   <td><i>{++x}</i></td>
                                   <td>{bucketlist.name}</td>
                                   <td>
