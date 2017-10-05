@@ -30,10 +30,16 @@ describe('<Mybuckets/>', () => {
     wrapper.instance().handleSearch({preventDefault: () =>{} })
     expect(Mybuckets.prototype.handleSearch.called).toEqual(true)
   });
+  it('calls the handle update  bucketlists methods', () => {
+    sinon.spy(Mybuckets.prototype, 'handleupdate')
+    const wrapper = mount(<Mybuckets />)
+    wrapper.instance().handleupdate({preventDefault: () =>{} , target: { value: '' }})
+    expect(Mybuckets.prototype.handleupdate.called).toEqual(true)
+  });
   it('calls the handle update Buckets methods', () => {
     sinon.spy(Mybuckets.prototype, 'updateBucket')
     const wrapper = mount(<Mybuckets />)
-    wrapper.instance().updateBucket({preventDefault: () =>{} })
+    wrapper.instance().updateBucket({ preventDefault: () => {}  });
     expect(Mybuckets.prototype.updateBucket.called).toEqual(true)
   });
   it('calls the handle add items to a bucketlist methods', () => {
