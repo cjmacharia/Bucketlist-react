@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/cjmash/Bucketlist-react.svg?branch=ft-authorization-features)](https://travis-ci.org/cjmash/Bucketlist-react)  [![Coverage Status](https://coveralls.io/repos/github/cjmash/Bucketlist-react/badge.svg?branch=ft-authorization-features)](https://coveralls.io/github/cjmash/Bucketlist-react?branch=master) [![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/codeclimate/codeclimate) [![Coverage Status](https://coveralls.io/repos/github/cjmash/Bucketlist-react/badge.svg?branch=ft-authorization-features)](https://coveralls.io/github/cjmash/Bucketlist-react?branch=ft-authorization-features)
+[![Build Status](https://travis-ci.org/cjmash/Bucketlist-react.svg?branch=ft-authorization-features)](https://travis-ci.org/cjmash/Bucketlist-react) [![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/codeclimate/codeclimate) [![Coverage Status](https://coveralls.io/repos/github/cjmash/Bucketlist-react/badge.svg?branch=master)](https://coveralls.io/github/cjmash/Bucketlist-react?branch=master)
 
 # Getting Started
 
