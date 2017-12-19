@@ -1,0 +1,8 @@
+machine:
+  node:
+    version: 6.0.0
+test:
+  override:
+    - yarn test -- --coverage
+  post:
+    - yarn install -g codeclimate-test-reporter
