@@ -1,7 +1,8 @@
 machine:
   environment:
-    PROJECT_NAME: react
+    PROJECT_NAME: My First Project
     CLOUDSDK_COMPUTE_ZONE: us-east1-b
+    CLUSTER_NAME: react
     PROJECT_ID: celestial-brand-187707
   node:
     version: 8.9.2
