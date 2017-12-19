@@ -30,12 +30,7 @@ describe('<BucketItems/>', () => {
       },
     };
   });
-  it('renders page without crashing ', () => {
-    const rendered = renderer.create(
-      <BucketItems {...props} />,
-    );
-    expect(rendered.toJSON()).toMatchSnapshot();
-  });
+
   it('renders col', () => {
     const wrapper = shallow(<BucketItems {...props} />);
     expect(wrapper.find('Col').length).toEqual(2);
