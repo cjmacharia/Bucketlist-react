@@ -7,13 +7,6 @@ import LoginPage from '../components/login';
 
 describe('<LoginPage/>', () => {
 
-  it('renders page without crashing ', () => {
-    const rendered = renderer.create(
-      <LoginPage />,
-      );
-    expect(rendered.toJSON()).toMatchSnapshot();
-  })
-
   it('renders col', () => {
     const wrapper = shallow(<LoginPage />);
     expect(wrapper.find('Col').length).toEqual(1);
