@@ -5,12 +5,6 @@ import sinon from 'sinon';
 import renderer from 'react-test-renderer';
 
 describe('<Mybuckets/>', () => {
-  it('renders page without crashing ', () => {
-    const rendered = renderer.create(
-      <Mybuckets />,
-    );
-    expect(rendered.toJSON()).toMatchSnapshot();
-  });
   it('renders col', () => {
     const wrapper = shallow(<Mybuckets />);
     expect(wrapper.find('Col').length).toEqual(2);
