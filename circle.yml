@@ -1,8 +1,8 @@
 machine:
   environment:
-    PROJECT_NAME:react
+    PROJECT_NAME: react
     CLOUDSDK_COMPUTE_ZONE: us-east1-b
-    PROJECT_ID:celestial-brand-187707
+    PROJECT_ID: celestial-brand-187707
   node:
     version: 8.9.2
 dependencies:
