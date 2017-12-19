@@ -12,9 +12,8 @@ test:
 deployment:
     staging:
         branch: master
-        commands:
         # deploy to compute Engine
-       sudo gcloud compute --project "celestial-brand-187707" ssh --zone "us-east1-b" "react"
+        
 
    
     
