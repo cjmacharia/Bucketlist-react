@@ -5,12 +5,6 @@ import Changepassword from '../components/changepassword';
 import renderer from 'react-test-renderer';
 
 describe('<Changepassword/>', () => {
-  it('renders page without crashing ', () => {
-    const rendered = renderer.create(
-      <Changepassword />,
-    );
-    expect(rendered.toJSON()).toMatchSnapshot();
-  });
   it('calls the handle handleclick methods', () => {
     sinon.spy(Changepassword.prototype, 'handleClick');
     const wrapper = mount(<Changepassword />);
