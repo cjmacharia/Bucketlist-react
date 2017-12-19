@@ -9,3 +9,10 @@ dependencies:
 test:
   override:
     - yarn test
+deployment:
+    staging:
+        branch: master
+        commands:
+        # deploy tocompute Engine
+        - gcloud -q preview app deploy app.yaml --promote --version=1    
+    
