@@ -5,13 +5,7 @@ import RegisterPage from '../components/register';
 import renderer from 'react-test-renderer';
 
 describe('<RegisterPage/>', () => {
-  it('renders page without crashing ', () => {
-    const rendered = renderer.create(
-      <RegisterPage />,
-      );
-    expect(rendered.toJSON()).toMatchSnapshot();
-  })
-
+  
   it('renders col', () => {
     const wrapper = shallow(<RegisterPage />);
     expect(wrapper.find('Col').length).toEqual(1);
