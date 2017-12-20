@@ -13,6 +13,8 @@ dependencies:
     - echo $ACCOUNT_ID > key.txt
     #decode the string
     - base64 -i key.txt -d > ${HOME}/gcloud-service-key.json
+    # Authenticate CircleCI with the service account file
+    - sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account ${ACCOUNT_ID} --key-file ${HOME}/gcloud-service-key.json
     # Set the default project
     - sudo /opt/google-cloud-sdk/bin/gcloud config set project $PROJECT_ID
     # Set the default compute area
@@ -25,7 +27,7 @@ test:
   override:
     - yarn test
 deployment:
-    staging:
+    production:
         branch: master
         # deploy to compute Engine
    
