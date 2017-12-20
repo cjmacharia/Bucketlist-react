@@ -7,9 +7,15 @@ machine:
     version: 8.9.2
 dependencies:
   pre:
+  #update gcloud to the latest version
     - sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update --version 120.0.0
-    - echo $ACCT_AUTH | base64 --decode -i > ${HOME}//gcloud-service-key.json
+    # Save the string to a text file
+    - echo $ACCOUNT_ID > key.txt
+    #decode the string
+    - base64 -i key.txt -d > ${HOME}/gcloud-service-key.json
+    # Set the default project
     - sudo /opt/google-cloud-sdk/bin/gcloud config set project $PROJECT_ID
+    # Set the default compute area
     - sudo /opt/google-cloud-sdk/bin/gcloud config set compute/zone ${CLOUDSDK_COMPUTE_ZONE}
   override:
     - yarn
