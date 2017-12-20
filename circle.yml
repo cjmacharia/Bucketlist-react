@@ -10,7 +10,7 @@ dependencies:
   #update gcloud to the latest version
     - sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update --version 120.0.0
     # Save the string to a text file
-    - echo $ACCOUNT_ID > key.txt
+    - echo $SECRET_KEY > key.txt
     #decode the string
     - base64 -i key.txt -d > ${HOME}/gcloud-service-key.json
     # Authenticate CircleCI with the service account file
