@@ -18,7 +18,7 @@ class RegisterPage extends Component{
     }
 
     handleClick(event) {
-      var apiUrl = "http://10.240.0.4/" ;
+      var apiUrl = "http://10.240.0.4:5000/" ;
       var payload = {
         "email":this.state.email,
         "username":this.state.username,
