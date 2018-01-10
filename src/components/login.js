@@ -17,7 +17,7 @@ class LoginPage extends Component {
   }
 
   handleClick() {
-    const apiUrl = 'http://10.240.0.4';
+    const apiUrl = 'http://10.240.0.4/';
     const payload = {
       email: this.state.email,
       password: this.state.password,
