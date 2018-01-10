@@ -8,7 +8,7 @@ import './style.css';
 import { toast } from 'react-toastify';
 import Toaster from '../containers/toaster.js';
 
-const apiUrl = 'https://andela-bucketlistapi.herokuapp.com';
+const apiUrl = 'http://10.240.0.4';
 class Mybuckets extends Component {
   constructor(props) {
     super(props);
