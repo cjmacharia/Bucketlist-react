@@ -9,7 +9,7 @@ import Loggedin from './nav-log.js';
 import './style.css';
 import './style.css';
 
-const apiUrl = 'https://andela-bucketlistapi.herokuapp.com/';
+const apiUrl = 'http://10.240.0.4';
 class BucketItems extends Component {
   constructor(props) {
     super(props);
