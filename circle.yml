@@ -31,7 +31,7 @@ dependencies:
 test:
   override:
     - terraform/terraform init
-    - terraform/terraform apply
+    - terraform/terraform plan
     - yarn test
 deployment:
     production:
