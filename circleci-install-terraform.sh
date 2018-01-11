@@ -1,5 +1,6 @@
 #!/bin/sh
 
+
 if [ -d terraform/terraform ]; then
   sudo rm -rf terraform
 fi
