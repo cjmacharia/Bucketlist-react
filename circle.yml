@@ -1,8 +1,8 @@
 machine:
   environment:
-    PROJECT_NAME: My First Project
-    CLOUDSDK_COMPUTE_ZONE: us-east1-b
-    PROJECT_ID: celestial-brand-187707
+    PROJECT_NAME: advanced
+    CLOUDSDK_COMPUTE_ZONE: europe-west3-b
+    PROJECT_ID: advanced-191310
   node:
     version: 8.9.2
 dependencies:
