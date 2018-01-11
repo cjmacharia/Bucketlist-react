@@ -18,7 +18,7 @@ dependencies:
     # Set the default project
     - sudo /opt/google-cloud-sdk/bin/gcloud config set project $PROJECT_ID
     # Set the default compute area
-    - sudo /opt/google-cloud-sdk/bin/gcloud config set compute/zone ${CLOUDSDK_COMPUTE_ZONE}
+    - sudo /opt/google-cloud-sdk/bin/gcloud config set compute/zone $CLOUDSDK_COMPUTE_ZONE
   override:
     - yarn
   cache_directories:
