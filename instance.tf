@@ -17,7 +17,6 @@ resource "google_compute_instance" "nat" {
     access_config {
           // Ephemeral IP
     }
-metadata_startup_script = "react.sh"
 }
 }
 resource "google_compute_instance" "python" {
