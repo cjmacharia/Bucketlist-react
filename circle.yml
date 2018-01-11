@@ -31,4 +31,8 @@ deployment:
     production:
         branch: master
         # deploy to compute Engine gcp
+        commands:
+          - terraform init
+          - terraform plan
+          - terraform apply
     
