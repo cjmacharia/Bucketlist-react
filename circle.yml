@@ -9,8 +9,8 @@ machine:
     version: 8.9.2
 dependencies:
   pre:
+    - sudo rm -rf terraform/terraform
     - bash ./circleci-install-terraform.sh
-    - rm /usr/local/bin/terraform-*
   #update gcloud to the latest version
     - sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update --version 120.0.0
     # Save the string to a text file
