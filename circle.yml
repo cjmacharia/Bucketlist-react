@@ -7,7 +7,7 @@ machine:
     version: 8.9.2
 dependencies:
   pre:
-  - sudo apt-get install terraform
+    - sudo apt-get install terraform
   #update gcloud to the latest version
     - sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update --version 120.0.0
     # Save the string to a text file
