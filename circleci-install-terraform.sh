@@ -1,12 +1,10 @@
 #!/bin/sh
-
-if [ -d terraform/terraform ]; then
+set -e 
+if [ -d terraform ]; then
   sudo rm -rf terraform
- sudo apt-get uninstall terraform
 fi
-# wget https://releases.hashicorp.com/terraform/0.10.6/terraform_0.10.6_linux_amd64.zip
-#  unzip -o terraform_0.10.6_linux_amd64.zip -d terraform
- sudo apt-get install terraform
+wget https://releases.hashicorp.com/terraform/0.10.6/terraform_0.10.6_linux_amd64.zip
+ unzip -o terraform_0.10.6_linux_amd64.zip -d terraform
  
  
  
