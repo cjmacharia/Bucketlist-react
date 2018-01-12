@@ -32,6 +32,7 @@ test:
   override:
     - terraform/terraform init
     - terraform/terraform plan
+    -terraform/terraform destroy
     - yarn test
 deployment:
     production:
