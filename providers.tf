@@ -1,9 +1,8 @@
 
 // variable "region"{}
 // variable "project"{}
-provider "aws" {
-      credentials = "${file("{${HOME}/gcloud-service-key.json}")"
-}")}"
+provider "google" {
+    credentials = "{{ env  `GOOGLE_CREDENTIALS` }}"
     region = "europe-west3"
     project = "advanced-191310"
 }
