@@ -4,7 +4,7 @@ machine:
     CLOUDSDK_COMPUTE_ZONE: europe-west3-b
     PROJECT_ID: advanced-191310
   terraform:
-    version: 0.11.1
+    version: 0.10.6
   node:
     version: 8.9.2
 dependencies:
