@@ -2,7 +2,7 @@
 // variable "region"{}
 // variable "project"{}
 provider "google" {
-    credentials = "${file (${HOME}/gcloud-service-key.json)"
+    credentials = `GOOGLE_CREDENTIALS`
     region = "europe-west3"
     project = "advanced-191310"
 }
