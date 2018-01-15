@@ -31,6 +31,9 @@ provisioner "file" {
     connection {
         type = "ssh"
         user = "cj"
+        agent = false
+        private_key = "${PRIVATE_KEY}"
+
 
     }
 }
@@ -39,6 +42,7 @@ provisioner "remote-exec"{
       type = "ssh"
       user = "cj"
       agent = false
+      private_key = "${PRIVATE_KEY}"
     }
     inline = [
       "chmod +x /tmp/script.sh"
