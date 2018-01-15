@@ -11,7 +11,7 @@ resource "google_compute_instance" "nat" {
     name           = "react-${random_string.random.result}"
     can_ip_forward = true
     machine_type   = "f1-micro"
-    tags = ["allow-ssh"]
+        tags       =  ["${google_compute_firewall.pulic.name}"]
     boot_disk {
         initialize_params {
             image = "ubuntu-1604-xenial-v20170328"
