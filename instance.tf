@@ -1,6 +1,8 @@
 resource "random_string" "random" {
-    length = 3
-    special = true
+    length = 4
+    special = false
+    upper = false
+    lower = true
 }
 resource "google_compute_instance" "nat" {
     project = "advanced-191310"
