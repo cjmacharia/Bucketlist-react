@@ -1,10 +1,12 @@
 resource "google_compute_network" "my-network" {
-    name = "my-network"
+    name = "my-network-${count.index}"
+    count = 1
     description = "A network meant to be used by the new instance created"
     auto_create_subnetworks = "false"
 }
 resource "google_compute_firewall" "my-network-firewall" {
-  name    = "my-network-firewall"
+  name    = "my-network-firewall-${count.index}"
+  count = 1
   network = "${google_compute_network.my-network.name}"
 
   allow {
@@ -19,7 +21,8 @@ resource "google_compute_firewall" "my-network-firewall" {
 }
 
 resource "google_compute_subnetwork" "public-subnet" {
-  name          = "public-subnet"
+  name          = "public-subnet-${count.index}"
+  count         = 1
   ip_cidr_range = "10.0.1.0/24"
   network       = "${google_compute_network.my-network.name}"
   region        = "europe-west3"
