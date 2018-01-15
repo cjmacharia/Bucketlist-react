@@ -1,7 +1,7 @@
 resource "google_compute_instance" "nat" {
     project = "advanced-191310"
     zone           = "europe-west3-b"
-    name           = "react-${random_id}"
+    name           = "react-${var.random_id}"
     can_ip_forward = true
     count = 1
     machine_type   = "f1-micro"
@@ -47,7 +47,7 @@ resource "google_compute_instance" "python" {
 
     project = "advanced-191310"
     zone = "europe-west3-b"
-    name = "python-instance-${random_id}"
+    name = "python-instance-${var.random_id}"
     can_ip_forward = false
     machine_type = "f1-micro"
     boot_disk {
@@ -66,7 +66,7 @@ resource "google_compute_instance" "python" {
 resource "google_compute_instance" "db" {
     project = "advanced-191310"
     zone = "europe-west3-b"
-    name ="db-instance-${random_id}"
+    name ="db-instance-${var.random_id}"
     can_ip_forward = false
     count = 1
     machine_type = "f1-micro"
