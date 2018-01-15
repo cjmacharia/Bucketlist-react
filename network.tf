@@ -30,7 +30,7 @@ resource "google_compute_subnetwork" "public-subnet" {
 resource "google_compute_firewall" "pulic" {
   network    = "${google_compute_network.my-network.name}"
 
-  name = "allow-rules"
+  name = "allow-rules-${random_string.random.result}"
   allow {
     protocol = "tcp"
     ports = ["8080" , "22" , "20" , "80"]
