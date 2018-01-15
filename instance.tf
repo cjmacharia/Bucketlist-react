@@ -11,7 +11,7 @@ resource "google_compute_instance" "nat" {
     name           = "react-${random_string.random.result}"
     can_ip_forward = true
     machine_type   = "f1-micro"
-    tags           =  ["${google_compute_firewall.public.name}"]
+    tags           =  "${google_compute_firewall.public.name}"
 
     boot_disk {
         initialize_params {
