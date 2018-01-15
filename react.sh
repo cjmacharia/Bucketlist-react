@@ -35,4 +35,4 @@ git clone https://github.com/cjmash/Bucketlist-react.git
 fi
 cd ~/Bucketlist-react
 yarn install
-yarn start&
+yarn start

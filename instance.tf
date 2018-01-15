@@ -1,9 +1,9 @@
-
 resource "google_compute_instance" "nat" {
     project = "advanced-191310"
     zone           = "europe-west3-b"
-    name           ="terra-nat-gateway"
+    name           = "react-${count.index}"
     can_ip_forward = true
+    count = 1
     machine_type   = "f1-micro"
     tags           =  ["allow-rules"]
 
@@ -18,11 +18,38 @@ resource "google_compute_instance" "nat" {
           // Ephemeral IP
     }
 }
+
+provisioner "file" {
+    source = "react.sh"
+    destination = "/tmp/script.sh"
+
+    connection {
+        type = "ssh"
+        user = "cj"
+        private_key = "${file("~/.ssh/google_compute_engine")}"
+
+    }
+}
+provisioner "remote-exec"{
+     connection {
+      type = "ssh"
+      user = "cj"
+    private_key = "${file("~/.ssh/google_compute_engine")}"
+      agent = false
+    }
+    inline = [
+      "chmod +x /tmp/script.sh"
+    ]
+}
+lifecycle {
+        create_before_destroy =true
+    }
 }
 resource "google_compute_instance" "python" {
+
     project = "advanced-191310"
     zone = "europe-west3-b"
-    name ="terra-python-instance"
+    name = "python-instance-${count.index}"
     can_ip_forward = false
     machine_type = "f1-micro"
     boot_disk {
@@ -33,14 +60,17 @@ resource "google_compute_instance" "python" {
     network_interface {
         subnetwork = "${google_compute_subnetwork.private-subnet.name}"
     }
-
+    lifecycle {
+        create_before_destroy =true
+    }
 
 }
 resource "google_compute_instance" "db" {
     project = "advanced-191310"
     zone = "europe-west3-b"
-    name ="terra-db-instance"
+    name ="db-instance-${count.index}"
     can_ip_forward = false
+    count = 1
     machine_type = "f1-micro"
     boot_disk {
         initialize_params {
@@ -50,5 +80,8 @@ resource "google_compute_instance" "db" {
     network_interface {
         subnetwork = "${google_compute_subnetwork.database-subnet.name}"
 
+    }
+    lifecycle {
+        create_before_destroy = true
     }
 }

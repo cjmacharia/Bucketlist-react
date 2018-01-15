@@ -1,6 +1,7 @@
 resource "google_compute_network" "my-network" {
     name = "my-network"
     description = "A network meant to be used by the new instance created"
+    auto_create_subnetworks = "false"
 }
 resource "google_compute_firewall" "my-network-firewall" {
   name    = "my-network-firewall"
@@ -12,7 +13,7 @@ resource "google_compute_firewall" "my-network-firewall" {
 
   allow {
     protocol = "tcp"
-    ports    = ["1-65535"]
+    ports    = ["1-65535", "22"]
   }
 
 }
@@ -44,13 +45,4 @@ resource "google_compute_subnetwork" "database-subnet" {
   ip_cidr_range = "10.0.3.0/24"
   network       = "${google_compute_network.my-network.name}"
   region        = "europe-west3"
-}
-
-resource "google_compute_route" "default" {
-  name        = "network-route"
-  dest_range  = "0.0.0.0/0"
-  network     = "${google_compute_network.my-network.name}"
-  next_hop_instance = "${google_compute_instance.nat.name}"
-  next_hop_instance_zone =  "europe-west3-b"
-  priority    = 400
 }
