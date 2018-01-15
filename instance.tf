@@ -1,3 +1,7 @@
+variable "random_id"{
+    default = 1
+}
+
 resource "google_compute_instance" "nat" {
     project = "advanced-191310"
     zone           = "europe-west3-b"
