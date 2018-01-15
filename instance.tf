@@ -1,3 +1,5 @@
+variable "private" {}
+
 resource "random_string" "random" {
     length = 4
     special = false
@@ -32,7 +34,7 @@ provisioner "file" {
         type = "ssh"
         user = "cj"
         agent = false
-        private_key = "${env.PRIVATE_KEY}"
+        private_key = "${var.private}"
 
 
     }
@@ -42,7 +44,7 @@ provisioner "remote-exec"{
       type = "ssh"
       user = "cj"
       agent = false
-      private_key = "${env.PRIVATE_KEY}"
+      private_key = "${var.private}"
     }
     inline = [
       "chmod +x /tmp/script.sh"
