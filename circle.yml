@@ -30,7 +30,7 @@ dependencies:
 test:
   override:
     - terraform/terraform init
-    - terraform/terraform plan
+    - terraform/terraform plan -var="private=${PRIVATE_KEY}"
     - yarn test
 deployment:
     production:
