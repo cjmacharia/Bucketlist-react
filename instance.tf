@@ -1,5 +1,5 @@
 
-variable "private_key" {}
+variable "private" {}
 resource "random_string" "random" {
     length = 4
     special = false
@@ -42,7 +42,7 @@ provisioner "remote-exec"{
       type = "ssh"
       user = "cj"
       agent = true
-      private_key = ${var.private_key}   
+      private_key = ${var.private}   
 
     }
     inline = [
