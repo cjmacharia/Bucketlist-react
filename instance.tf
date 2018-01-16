@@ -24,27 +24,29 @@ resource "google_compute_instance" "nat" {
     }
 }
 
-# provisioner "file" {
-#     source = "react.sh"
-#     destination = "/tmp/script.sh"
+provisioner "file" {
+    source = "react.sh"
+    destination = "/tmp/script.sh"
 
-#     connection {
-#         type = "ssh"
-#         user = "root"
+    connection {
+        type = "ssh"
+        user = "root"
+        password = "cj"
 
 
-#     }
-# }
-# provisioner "remote-exec"{
-#      connection {
-#       type = "ssh"
-#       user = "root"
+    }
+}
+provisioner "remote-exec"{
+     connection {
+      type = "ssh"
+      user = "root"
+         password = "cj"
 
-#     }
-#     inline = [
-#       "chmod +x /tmp/script.sh"
-#     ]
-# }
+    }
+    inline = [
+      "chmod +x /tmp/script.sh"
+    ]
+}
 lifecycle {
         create_before_destroy =true
     }
