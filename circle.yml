@@ -30,11 +30,11 @@ dependencies:
 test:
   override:
     - terraform/terraform init
-    - terraform/terraform plan 
+    - terraform/terraform plan -var=private_key=${PRIVATE_KEY}
     - yarn test
 deployment:
     production:
         branch: master
         # deploy to compute Engine gcp
         commands:
-         - terraform/terraform apply 
+         - terraform/terraform apply  -var=private_key=${PRIVATE_KEY}
