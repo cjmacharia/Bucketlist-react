@@ -37,4 +37,4 @@ deployment:
         branch: master
         # deploy to compute Engine gcp
         commands:
-         - terraform/terraform apply  
+         - terraform/terraform apply -auto-approve 
