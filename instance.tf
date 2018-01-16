@@ -31,7 +31,8 @@ provisioner "file" {
     connection {
         type = "ssh"
         user = "cj"
-        private_key = " ~/.ssh/config"
+        agent = "false"
+        password = "cjj"
 
 
     }
@@ -40,7 +41,8 @@ provisioner "remote-exec"{
      connection {
       type = "ssh"
       user = "cj"
-      private_key = " ~/.ssh/config" 
+      agent = "false"
+      password = "cjj" 
 
     }
     inline = [
