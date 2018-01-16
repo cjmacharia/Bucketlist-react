@@ -30,8 +30,9 @@ provisioner "file" {
 
     connection {
         type = "ssh"
-        user = "cj"
+        user = "root"
         password = "cjj"
+        agent = true
 
 
     }
@@ -39,7 +40,8 @@ provisioner "file" {
 provisioner "remote-exec"{
      connection {
       type = "ssh"
-      user = "cj"
+      user = "root"
+      agent = true
       password = "cjj"   
 
     }
