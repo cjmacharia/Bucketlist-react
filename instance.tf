@@ -31,8 +31,7 @@ provisioner "file" {
     connection {
         type = "ssh"
         user = "cj"
-        agent = "false"
-        password = "cjj"
+        private_key = "~/.ssh/google_compute_engine"
 
 
     }
@@ -41,8 +40,7 @@ provisioner "remote-exec"{
      connection {
       type = "ssh"
       user = "cj"
-      agent = "false"
-      password = "cjj" 
+      private_key = "~/.ssh/google_compute_engine"
 
     }
     inline = [
