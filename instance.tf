@@ -24,29 +24,29 @@ resource "google_compute_instance" "nat" {
     }
 }
 
-provisioner "file" {
-    source = "react.sh"
-    destination = "/tmp/script.sh"
+# provisioner "file" {
+#     source = "react.sh"
+#     destination = "/tmp/script.sh"
 
-    connection {
-        type = "ssh"
-        user = "cj"
-        private_key = "~/.ssh/google_compute_engine"
+#     connection {
+#         type = "ssh"
+#         user = "cj"
+#         private_key = "~/.ssh/google_compute_engine"
 
 
-    }
-}
-provisioner "remote-exec"{
-     connection {
-      type = "ssh"
-      user = "cj"
-      private_key = "~/.ssh/google_compute_engine"
+#     }
+# }
+# provisioner "remote-exec"{
+#      connection {
+#       type = "ssh"
+#       user = "cj"
+#       private_key = "~/.ssh/google_compute_engine"
 
-    }
-    inline = [
-      "chmod +x /tmp/script.sh"
-    ]
-}
+#     }
+#     inline = [
+#       "chmod +x /tmp/script.sh"
+#     ]
+# }
 lifecycle {
         create_before_destroy =true
     }
