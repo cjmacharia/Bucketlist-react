@@ -30,8 +30,7 @@ resource "google_compute_instance" "nat" {
 
 #     connection {
 #         type = "ssh"
-#         user = "cj"
-#         private_key = "~/.ssh/google_compute_engine"
+#         user = "root"
 
 
 #     }
@@ -39,8 +38,7 @@ resource "google_compute_instance" "nat" {
 # provisioner "remote-exec"{
 #      connection {
 #       type = "ssh"
-#       user = "cj"
-#       private_key = "~/.ssh/google_compute_engine"
+#       user = "root"
 
 #     }
 #     inline = [
