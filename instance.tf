@@ -40,7 +40,7 @@ provisioner "remote-exec"{
      connection {
       type = "ssh"
       user = "root"
-         password = "cj"
+      password = "cj"
 
     }
     inline = [
