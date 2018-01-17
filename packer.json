@@ -1,0 +1,29 @@
+{
+    "variables" :{
+        "service_account_json" :"credentials.json"
+
+    },
+    "builders" : [
+        {
+
+        "type" :"googlecompute",
+        "project_id": "packer-192412",
+        "source_image":"ubuntu-1604-xenial-v20170815a",
+        "machine_type": "n1-standard-1",
+        "region": "europe-west1",
+        "zone": "europe-west1-b",
+        "ssh_username":"cj",
+        "image_name": "cp-base-image",
+        "image_description": "my cp image ",
+        "image_family": "ubuntu-1604-lts",
+        "disk_size":10,
+        "account_file" :"credentials.json"
+
+    }
+ ],
+ "provisioners" : [{
+   "type":"shell",
+   "script":"start.sh"
+ }]
+
+}

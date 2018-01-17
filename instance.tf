@@ -6,7 +6,7 @@ resource "random_string" "random" {
     lower = true
 }
 resource "google_compute_instance" "nat" {
-    project = "advanced-191310"
+    project         = "packer-192412"
     zone           = "europe-west3-b"
     name           = "react-${random_string.random.result}"
     can_ip_forward = true
@@ -14,7 +14,7 @@ resource "google_compute_instance" "nat" {
         tags       =  ["${google_compute_firewall.pulic.name}"]
     boot_disk {
         initialize_params {
-            image = "ubuntu-1604-xenial-v20170328"
+            image = "cp-base-image"
         }
     }
     network_interface {
@@ -31,7 +31,7 @@ provisioner "file" {
     connection {
         type = "ssh"
         user = "jamescollins_jc30"
-          password = "sumn"   
+          password = "sumn"
 
 
     }
@@ -40,7 +40,7 @@ provisioner "remote-exec"{
      connection {
       type = "ssh"
       user = "jamescollins_jc30"
-      password = "sumn"   
+      password = "sumn"
 
     }
     inline = [
@@ -53,14 +53,14 @@ lifecycle {
  }
 resource "google_compute_instance" "python" {
 
-    project = "advanced-191310"
+    project = "packer-192412"
     zone = "europe-west3-b"
     name = "python-instance-${random_string.random.result}"
     can_ip_forward = false
     machine_type = "f1-micro"
     boot_disk {
         initialize_params {
-            image = "ubuntu-1604-xenial-v20170328"
+            image = "cp-base-image"
         }
     }
     network_interface {
@@ -72,7 +72,7 @@ resource "google_compute_instance" "python" {
 
 }
 resource "google_compute_instance" "db" {
-    project = "advanced-191310"
+    project = "packer-192412"
     zone = "europe-west3-b"
     name ="db-instance-${random_string.random.result}"
     can_ip_forward = false
@@ -80,7 +80,7 @@ resource "google_compute_instance" "db" {
     machine_type = "f1-micro"
     boot_disk {
         initialize_params {
-            image = "ubuntu-1604-xenial-v20170328"
+            image = "cp-base-image"
         }
     }
     network_interface {
