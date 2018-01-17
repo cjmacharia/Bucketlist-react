@@ -30,7 +30,7 @@ provisioner "file" {
 
     connection {
         type = "ssh"
-        user = "jamescollins_jc30"
+        user = "cj"
           password = "sumn"
 
 
@@ -39,7 +39,7 @@ provisioner "file" {
 provisioner "remote-exec"{
      connection {
       type = "ssh"
-      user = "jamescollins_jc30"
+      user = "cj"
       password = "sumn"
 
     }
