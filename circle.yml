@@ -1,37 +1,39 @@
-machine:
-  docker:
-    - image: cjmash/79061fc82
-  environment:
-    PROJECT_NAME: packer
-    CLOUDSDK_COMPUTE_ZONE: europe-west3-b
-    PROJECT_ID: packer-192412
-  node:
-    version: 8.9.2
-dependencies:
-  pre:
-    - sudo rm -rf terraform/terraform
-  #update gcloud to the latest version
-    - sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update
-    # Save the string to a text file
-    - echo $SECRET_KEY > key.txt
-    #decode the string
-    - base64 -i key.txt -d > ${HOME}/gcloud-service-key.json
-    # Authenticate CircleCI with the service account file
-    - sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account ${ACCOUNT_ID} --key-file ${HOME}/gcloud-service-key.json
-    # Set the default project
-    - sudo /opt/google-cloud-sdk/bin/gcloud config set project $PROJECT_ID
-    # Set the default compute area
-    - sudo /opt/google-cloud-sdk/bin/gcloud config set compute/zone $CLOUDSDK_COMPUTE_ZONE
-  override:
-    - yarn
-  cache_directories:
-    - ~/.cache/yarn
-test:
-  override:
-    - yarn test
-deployment:
-    production:
-        branch: master
-        # deploy to compute Engine gcp
-        commands:
-         - bash ./deploy.sh
+version: 2
+jobs:
+ build:
+   docker:
+      - image: cjmash/79061fc82
+    environment:
+      PROJECT_NAME: packer
+      CLOUDSDK_COMPUTE_ZONE: europe-west3-b
+      PROJECT_ID: packer-19241277
+    node:
+      version: 8.9.2
+  dependencies:
+    pre:
+      - sudo rm -rf terraform/terraform
+    #update gcloud to the latest version
+      - sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update
+      # Save the string to a text file
+      - echo $SECRET_KEY > key.txt
+      #decode the string
+      - base64 -i key.txt -d > ${HOME}/gcloud-service-key.json
+      # Authenticate CircleCI with the service account file
+      - sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account ${ACCOUNT_ID} --key-file ${HOME}/gcloud-service-key.json
+      # Set the default project
+      - sudo /opt/google-cloud-sdk/bin/gcloud config set project $PROJECT_ID
+      # Set the default compute area
+      - sudo /opt/google-cloud-sdk/bin/gcloud config set compute/zone $CLOUDSDK_COMPUTE_ZONE
+    override:
+      - yarn
+    cache_directories:
+      - ~/.cache/yarn
+  test:
+    override:
+      - yarn test
+  deployment:
+      production:
+          branch: master
+          # deploy to compute Engine gcp
+          commands:
+           - bash ./deploy.sh
