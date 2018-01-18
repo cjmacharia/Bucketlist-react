@@ -25,6 +25,12 @@ jobs:
     steps:
       - checkout
       - run:
+          name: install yarn update
+          command:  sudo npm install yarn -g
+      - run:
+          name: install dependencies
+          command: yarn install
+      - run:
           name: run tests
           command: sudo yarn test
 workflows:
