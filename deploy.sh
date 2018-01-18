@@ -16,3 +16,9 @@ set_up_terraform_infrastructure(){
     terraform init
     terraform apply auto-approve
 }
+main(){
+environment_variables
+clone_repo
+set_up_terraform_infrastructure
+}
+main "$@"
