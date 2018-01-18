@@ -27,3 +27,11 @@ jobs:
       - run:
           name: run tests
           command: yarn tests
+
+workflows:
+  version: 2
+  build_test:
+    - build
+    -test:
+      requires:
+        -build
