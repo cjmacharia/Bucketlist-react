@@ -4,9 +4,9 @@ set -e
 environment_variables(){
     echo "declaring variables"
 
-    PROJECT_NAME = "packer"
-    CLOUDSDK_COMPUTE_ZONE = "europe-west3-b"
-    PROJECT_ID = "packer-192412"
+    PROJECT_NAME="packer"
+    CLOUDSDK_COMPUTE_ZONE="europe-west3-b"
+    PROJECT_ID="packer-192412"
 }
 clone_repo(){
     echo "clone our repository "
