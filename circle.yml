@@ -34,4 +34,4 @@ deployment:
         branch: master
         # deploy to compute Engine gcp
         commands:
-         - bash deploy.sh
+         - bash ./deploy.sh
