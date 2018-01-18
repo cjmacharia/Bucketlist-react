@@ -12,11 +12,11 @@ jobs:
     steps:
       - checkout
       - run:
-        name: install yarn update
-        command:  sudo apt-get install yarn
+          name: install yarn update
+          command:  sudo apt-get install yarn
       - run:
-        name: install dependencies
-        command: yarn install
+          name: install dependencies
+          command: yarn install
       - save-cache:
         key: dependency-cache-{{ checksum "package.json" }}
         paths:
