@@ -1,16 +1,15 @@
 machine:
+  docker:
+    - image: cjmash/79061fc8277
   environment:
     PROJECT_NAME: packer
     CLOUDSDK_COMPUTE_ZONE: europe-west3-b
     PROJECT_ID: packer-192412
-  terraform:
-    version: 0.11.2
   node:
     version: 8.9.2
 dependencies:
   pre:
     - sudo rm -rf terraform/terraform
-    - bash ./circleci-install-terraform.sh
   #update gcloud to the latest version
     - sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update
     # Save the string to a text file
@@ -29,12 +28,10 @@ dependencies:
     - ~/.cache/yarn
 test:
   override:
-    - terraform/terraform init
-    - terraform/terraform plan 
     - yarn test
 deployment:
     production:
         branch: master
         # deploy to compute Engine gcp
         commands:
-         - terraform/terraform apply -auto-approve 
+         - bash deploy.sh
