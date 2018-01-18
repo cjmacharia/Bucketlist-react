@@ -9,7 +9,7 @@ environment_variables(){
     PROJECT_ID = "packer-192412"
 }
 clone_repo(){
-    echo "clone our repo "
+    echo "clone our repository "
     git clone https://github.com/cjmash/Bucketlist-react.git
 }
 
