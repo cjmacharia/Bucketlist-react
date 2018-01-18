@@ -1,6 +1,6 @@
 machine:
   docker:
-    - image: cjmash/79061fc8277
+    - image: cjmash/79061fc82
   environment:
     PROJECT_NAME: packer
     CLOUDSDK_COMPUTE_ZONE: europe-west3-b
