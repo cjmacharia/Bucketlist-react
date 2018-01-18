@@ -17,3 +17,12 @@ jobs:
       - run:
           name: install dependencies
           command: yarn install
+  test: docker:
+      - image: cjmash/79061fc8277
+      - image: circleci/node
+    working_directory: ~/react
+    steps:
+      - checkout
+      - run:
+          name: run tests
+          command: yarn tests
