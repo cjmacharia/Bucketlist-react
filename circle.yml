@@ -36,7 +36,7 @@ jobs:
   deploy_staging:
     docker:
       - image: cjmash/79061fc8277
-      - image: circle/node
+      - image: circleci/node
     steps:
       - checkout
       - deploy:
@@ -48,7 +48,7 @@ jobs:
   deploy_production:
     docker:
       - image: cjmash/79061fc8277
-      - image: circle/node
+      - image: circleci/node
     steps:
       - checkout
       - deploy:
