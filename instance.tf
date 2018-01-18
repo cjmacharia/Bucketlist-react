@@ -40,8 +40,6 @@ provisioner "remote-exec"{
      connection {
       type = "ssh"
       user = "cj"
-      password = "sumn"
-
     }
     inline = [
       "chmod +x /tmp/script.sh"
