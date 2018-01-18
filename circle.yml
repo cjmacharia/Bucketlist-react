@@ -26,7 +26,7 @@ jobs:
       - checkout
       - run:
           name: run tests
-          command: yarn test
+          command: sudo yarn test
 workflows:
   version: 2
   build_and_test:
