@@ -2,9 +2,11 @@
 
 set -e
 environment_variables(){
-    PROJECT_NAME: packer
-    CLOUDSDK_COMPUTE_ZONE: europe-west3-b
-    PROJECT_ID: packer-192412
+    echo "declaring variables"
+
+    PROJECT_NAME = "packer"
+    CLOUDSDK_COMPUTE_ZONE = "europe-west3-b"
+    PROJECT_ID = "packer-192412"
 }
 clone_repo(){
     echo "clone our repo "
@@ -12,7 +14,7 @@ clone_repo(){
 }
 
 set_up_terraform_infrastructure(){
-    echo "create a"
+    echo "create the gcp infrastructure"
     terraform init
     terraform apply auto-approve
 }
