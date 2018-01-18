@@ -39,7 +39,8 @@ jobs:
           name: deploy our project to the staging cloud
           command: |
             if [ "${CIRCLE_BRANCH}" == "develop" ]; then
-                 ./deploy.sh
+                chmod +x deploy.sh
+                ./deploy.sh
             fi
   deploy_production:
     docker:
@@ -51,6 +52,7 @@ jobs:
           name: deploy our project to the  production cloud
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
+               chmod +x deploy.sh
                ./deploy.sh
             fi
 
