@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: cjmash/79061fc82
+      - image: cjmash/79061fc8277
       - image: circleci/node
     environment:
       - PROJECT_NAME: packer
