@@ -71,7 +71,6 @@ workflows:
             branches:
               only: develop
       - deploy_production:
-          type: approval
           requires:
             - test
           filters:
