@@ -22,24 +22,12 @@ jobs:
         paths:
           - .node_modules
 
-  test:
-    steps:
-      - checkout
-    docker:
-      - image: cjmash/79061fc82
-      - image: circleci/node
-
-      run:
-        name: test
-        command: yarn tests
-  workflows:
-  version: 2
-  build_and_test:
-    jobs:
-      - build
-      - test:
-          requires:
-            - build
-
-
-
+  # test:
+  #   steps:
+  #     - checkout
+  #   docker:
+  #     - image: cjmash/79061fc82
+  #     - image: circleci/node
+  #     - run:
+  #         name: test
+  #         command: yarn tests
