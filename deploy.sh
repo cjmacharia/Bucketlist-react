@@ -16,7 +16,7 @@ clone_repo(){
 set_up_terraform_infrastructure(){
     echo "create the gcp infrastructure"
     terraform init
-    terraform apply auto-approve
+    terraform apply -auto-approve
 }
 main(){
 environment_variables
