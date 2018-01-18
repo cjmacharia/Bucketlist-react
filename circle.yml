@@ -38,10 +38,9 @@ jobs:
       - deploy:
           name: deploy our project to the staging cloud
           command: |
-            if [ "${CIRCLE_BRANCH}" == "develop" ]; then
-                chmod +x deploy.sh
-                ./deploy.sh
-            fi
+            chmod +x deploy.sh
+            ./deploy.sh
+            
   deploy_production:
     docker:
       - image: cjmash/79061fc8277
@@ -51,10 +50,9 @@ jobs:
       - deploy:
           name: deploy our project to the  production cloud
           command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-               chmod +x deploy.sh
-               bash ./deploy.sh
-            fi
+              chmod +x deploy.sh
+              bash ./deploy.sh
+           
 
 
 workflows:
