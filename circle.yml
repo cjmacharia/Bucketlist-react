@@ -4,10 +4,6 @@ jobs:
     docker:
       - image: cjmash/79061fc8277
       - image: circleci/node
-    environment:
-      - PROJECT_NAME: packer
-      - CLOUDSDK_COMPUTE_ZONE: europe-west3-b
-      - PROJECT_ID: packer-19241277
     working_directory: ~/react
     steps:
       - checkout
@@ -43,7 +39,7 @@ jobs:
           name: deploy our project to the staging cloud
           command: |
             if [ "${CIRCLE_BRANCH}" == "develop" ]; then
-                bash ./deploy.sh
+                 ./deploy.sh
             fi
   deploy_production:
     docker:
@@ -55,7 +51,7 @@ jobs:
           name: deploy our project to the  production cloud
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                bash ./deploy.sh
+               ./deploy.sh
             fi
 
 
@@ -75,6 +71,7 @@ workflows:
             branches:
               only: develop
       - deploy_production:
+          type: approval
           requires:
             - test
           filters:
