@@ -1,7 +1,7 @@
 version: 2
 jobs:
- build:
-   docker:
+  build:
+    docker:
       - image: cjmash/79061fc82
     environment:
       PROJECT_NAME: packer
