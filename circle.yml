@@ -42,8 +42,8 @@ jobs:
       - deploy:
           name: deploy our project to the staging cloud
           command: |
-          if [ "${CIRCLE_BRANCH}" == "develop" ]; then
-              bash .circleci/deploy.sh
+            if [ "${CIRCLE_BRANCH}" == "develop" ]; then
+                bash .circleci/deploy.sh
             fi
   deploy_production:
     docker:
@@ -54,8 +54,8 @@ jobs:
       - deploy:
           name: deploy our project to the  production cloud
           command: |
-          if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              bash .circleci/deploy.sh
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                bash .circleci/deploy.sh
             fi
 
 
