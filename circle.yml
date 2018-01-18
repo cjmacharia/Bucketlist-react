@@ -67,19 +67,16 @@ workflows:
       - test:
           requires:
             - build
-      - hold:
+      - deploy_staging:
           type: approval
           requires:
             - test
-      - deploy_staging:
-          requires:
-            - hold
           filters:
             branches:
               only: develop
-      - deploy_sproduction:
+      - deploy_production:
           requires:
-            - hold
+            - test
           filters:
             branches:
               only: master
