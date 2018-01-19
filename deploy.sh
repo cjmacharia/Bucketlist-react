@@ -16,7 +16,10 @@ clone_repo(){
 }
 create_the_packer_image(){
     echo "creating a packer image"
-    PROJECT_ID="$PROJECT_ID" GOOGLE_CREDENTIALS="$GOOGLE_CREDENTIALS" CODE_PATH="/home/circleci/react" packer build packer/build.json
+    pushd /home/circleci/react/packer
+        PROJECT_ID="$PROJECT_ID" GOOGLE_CREDENTIALS="$GOOGLE_CREDENTIALS" CODE_PATH="/home/circleci/react" packer build build.json 2>&1 | tee packer_output.log
+        CREATED_IMAGE="$(grep 'A disk image was created:' packer_output.log | cut -d' ' -f8)"
+        echo"$CREATED_IMAGE"
 }
 set_up_terraform_infrastructure(){
     echo "create the gcp infrastructure"
