@@ -23,7 +23,8 @@
 
         {
             "type":"file",
-            "source":"{{ user `code_path`}}"
+            "source":"{{ user `code_path`}}",
+            "destination":"/home/cj/react"
         },
         {
         "type":"file",
