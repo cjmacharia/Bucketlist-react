@@ -25,8 +25,8 @@ create_the_packer_image(){
 
 set_up_terraform_infrastructure(){
     echo "create the gcp infrastructure"
-    terraform init
-    terraform apply -auto-approve . -var="created_image=${CREATED_IMAGE}
+    terraform init -var="created_image=${CREATED_IMAGE}"
+    terraform apply -auto-approve . -var="created_image=${CREATED_IMAGE}"
 }
 main(){
 environment_variables
