@@ -28,13 +28,13 @@
         },
         {
         "type":"file",
-        "source": "python.sh",
+        "source": "/home/cj/react/python.sh",
         "destination": "/home/cj/python.sh"
     },
 
     {
         "type":"shell",
-        "source":"react.sh",
+        "source":"/home/cj/react/react.sh",
         "destination": "/home/cj/react.sh"
 
     }
