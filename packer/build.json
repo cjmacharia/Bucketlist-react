@@ -20,13 +20,13 @@
 
     "provisioners":[{
         "type":"file",
-        "script":"react.sh",
+        "source":"react.sh",
         "destination": "/home/cj/react.sh"
     },
 
     {
         "type":"shell",
-        "script":"python.sh",
+        "source":"python.sh",
         "destination": "/home/cj/react.sh"
 
     }
