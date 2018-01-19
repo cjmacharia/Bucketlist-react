@@ -25,18 +25,6 @@
             "type":"file",
             "source":"{{ user `code_path`}}",
             "destination":"/home/cj/react"
-        },
-        {
-        "type":"file",
-        "source": "/home/cj/react/python.sh",
-        "destination": "/home/cj/python.sh"
-    },
-
-    {
-        "type":"shell",
-        "source":"/home/cj/react/react.sh",
-        "destination": "/home/cj/react.sh"
-
-    }
+        }
 ]
 }
