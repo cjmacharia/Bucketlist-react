@@ -1,6 +1,4 @@
 variable "created_image"{}
-
-variable "created_image"{}
 resource "random_string" "random" {
     length = 4
     special = false
