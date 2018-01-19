@@ -1,4 +1,4 @@
-variables "CREATED_IMAGE"{}
+variables "created_image"{}
 
 variable "created_image"{}
 resource "random_string" "random" {
