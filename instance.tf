@@ -1,3 +1,4 @@
+variables "CREATED_IMAGE"{}
 
 variable "created_image"{}
 resource "random_string" "random" {
@@ -28,6 +29,10 @@ resource "google_compute_instance" "nat" {
 
     lifecycle {
         create_before_destroy =true
+    }
+
+    metadata {
+        startup_script="/home/cj/react/packer/react.sh"
     }
 
 }

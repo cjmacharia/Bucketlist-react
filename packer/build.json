@@ -25,6 +25,10 @@
             "type":"file",
             "source":"{{ user `code_path`}}",
             "destination":"/home/cj/react"
-        }
+        },
+        {
+            "type": "shell",
+            "inline": ["chmod +x /home/cj/react/packer/react.sh"]
+          }
 ]
 }
