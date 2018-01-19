@@ -16,5 +16,16 @@
         "image_family": "ubuntu-1604-lts",
         "disk_size":10,
         "account_file" :"{{user `credentials`}}"
-    }]
+    }],
+
+    "provisioners":[{
+        "type":"shell",
+        "script":"react.sh"
+    },
+
+    {
+        "type":"shell",
+        "script":"python.sh"
+    }
+]
 }
