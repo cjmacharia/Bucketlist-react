@@ -1,4 +1,5 @@
 
+variables "CREATED_IMAGE"{}
 resource "random_string" "random" {
     length = 4
     special = false
@@ -14,7 +15,7 @@ resource "google_compute_instance" "nat" {
         tags       =  ["${google_compute_firewall.pulic.name}"]
     boot_disk {
         initialize_params {
-            image = "${CREATED_IMAGE}"
+            image = "${var.CREATED_IMAGE}"
 
         }
     }
@@ -39,7 +40,7 @@ resource "google_compute_instance" "db" {
     machine_type = "f1-micro"
     boot_disk {
         initialize_params {
-            image = "${CREATED_IMAGE}"
+            image = "${var.CREATED_IMAGE}"
         }
     }
     network_interface {
