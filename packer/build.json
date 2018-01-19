@@ -19,13 +19,16 @@
     }],
 
     "provisioners":[{
-        "type":"shell",
-        "script":"react.sh"
+        "type":"file",
+        "script":"react.sh",
+        "destination": "/home/cj/react.sh"
     },
 
     {
         "type":"shell",
-        "script":"python.sh"
+        "script":"python.sh",
+        "destination": "/home/cj/react.sh"
+
     }
 ]
 }
