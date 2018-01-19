@@ -18,15 +18,17 @@
         "account_file" :"{{user `credentials`}}"
     }],
 
-    "provisioners":[{
+    "provisioners":[
+        
+        {
         "type":"file",
-        "source":"react.sh",
-        "destination": "/home/cj/react.sh"
+        "source": "python.sh",
+        "destination": "/home/cj/python.sh"
     },
 
     {
         "type":"shell",
-        "source":"python.sh",
+        "source":"react.sh",
         "destination": "/home/cj/react.sh"
 
     }
