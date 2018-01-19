@@ -14,7 +14,8 @@ resource "google_compute_instance" "nat" {
         tags       =  ["${google_compute_firewall.pulic.name}"]
     boot_disk {
         initialize_params {
-            image = ""
+            image = "${CREATED_IMAGE}"
+
         }
     }
     network_interface {
@@ -38,7 +39,7 @@ resource "google_compute_instance" "db" {
     machine_type = "f1-micro"
     boot_disk {
         initialize_params {
-            image = "cp-base-image"
+            image = "${CREATED_IMAGE}"
         }
     }
     network_interface {
