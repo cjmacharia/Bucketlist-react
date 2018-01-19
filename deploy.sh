@@ -14,7 +14,7 @@ clone_repo(){
 }
 create_the_packer_image(){
     echo "creating a packer image"
-    PROJECT_ID="$PROJECT_ID" GOOGLE_CREDENTIALS="$GOOGLE_CREDENTIALS" packer build.json
+    PROJECT_ID="$PROJECT_ID" GOOGLE_CREDENTIALS="$GOOGLE_CREDENTIALS" packer packer/build.json
 }
 set_up_terraform_infrastructure(){
     echo "create the gcp infrastructure"
@@ -24,6 +24,7 @@ set_up_terraform_infrastructure(){
 main(){
 environment_variables
 clone_repo
+create_the_packer_image
 set_up_terraform_infrastructure
 }
 main "$@"
