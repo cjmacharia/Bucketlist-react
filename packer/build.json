@@ -1,12 +1,13 @@
 {
 "variables" : {
     "credentials": "{{env `GOOGLE_CREDENTIALS`}}",
-    "project_id": "{{env `PROJECT_ID`}}"
+    "project_id": "{{env `PROJECT_ID`}}",
+    "code_path": "{{env `CODE_PATH` }}"
 },
     "builders":[{
         "type":"googlecompute",
         "source_image":"cp-base-image",
-        "project_id": "packer-192412",
+        "project_id": "{{user `project_id`}}",
         "machine_type": "n1-standard-1",
         "region": "europe-west1",
         "ssh_username":"cj",
@@ -19,7 +20,11 @@
     }],
 
     "provisioners":[
-        
+
+        {
+            "type":"file",
+            "source":"{{ user `code_path`}}"
+        },
         {
         "type":"file",
         "source": "python.sh",
