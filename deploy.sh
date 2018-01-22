@@ -26,8 +26,10 @@ create_the_packer_image(){
 
 set_up_terraform_infrastructure(){
     echo "create the gcp infrastructure"
-    terraform init 
-    terraform apply  -var="created_image=${CREATED_IMAGE}" -auto-approve 
+     pushd /home/circleci/react/
+        terraform init
+        terraform apply  -var="created_image=${CREATED_IMAGE}" -auto-approve
+    popd
 }
 main(){
 environment_variables
