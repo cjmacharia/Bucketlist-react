@@ -4,7 +4,7 @@ set -e
 ubuntu_install(){
     sudo apt-get -y update
     curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-    sudo apt-get install -y -g nodejs
+    sudo apt-get install -y  nodejs
     sudo apt-get install -y git
     sudo npm install -g -y yarn
 }
