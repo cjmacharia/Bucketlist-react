@@ -1,10 +1,10 @@
-// variable "created_image"{}
-// resource "random_string" "random" {
-//     length = 4
-//     special = false
-//     upper = false
-//     lower = true
-// }
+ variable "created_image"{}
+ resource "random_string" "random" {
+     length = 4
+     special = false
+     upper = false
+     lower = true
+ }
 // resource "google_compute_instance" "nat" {
 //     project         = "packer-192412"
 //     zone           = "europe-west3-b"
