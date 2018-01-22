@@ -6,7 +6,6 @@ ubuntu_install(){
     curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
     sudo apt-get install -y -g nodejs
     sudo apt-get install -y git
-    sudo apt-get install -y npm
     sudo npm install -g -y yarn
 }
 mac_os(){
