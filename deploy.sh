@@ -1,6 +1,7 @@
 #!bin/bash
 
 set -e
+
 environment_variables(){
     echo "declaring variables"
 
