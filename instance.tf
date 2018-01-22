@@ -6,7 +6,7 @@
  }
 // resource "google_compute_instance" "nat" {
 //     project         = "packer-192412"
-//     zone           = "europe-west3-b"
+//     zone           = "${var.zone}"
 //     name           = "nat-gateway-${random_string.random.result}"
 //     can_ip_forward = true
 //     machine_type   = "f1-micro"
@@ -35,6 +35,7 @@
 // }
 // resource "google_compute_instance" "db" {
 //     project = "packer-192412"
+//     zone   = "${var.zone}"
 //     zone = "europe-west3-b"
 //     name ="db-instance-${random_string.random.result}"
 //     can_ip_forward = false

@@ -4,7 +4,7 @@ variable "region"{
 }
 variable "zone" {
   type = "string"
-  default = "europe-west3-b"
+  default = "europe-west1-b"
 }
 variable "machine_type" {
   type = "string"

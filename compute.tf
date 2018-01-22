@@ -2,7 +2,7 @@ resource "google_compute_instance_template" "instance_template" {
   name_prefix  = "react-instance-template"
   machine_type = "${var.machine_type}"
   region       = "${var.region}"
-  tags            =  ["${google_compute_firewall.pulic.name}"]
+  tags         =  ["${google_compute_firewall.pulic.name}"]
   disk {
     source_image = "${var.created_image}"
   }
