@@ -16,7 +16,6 @@ resource "google_compute_instance_template" "instance_template" {
     create_before_destroy = true
   }
 
-
   metadata {
      startup_script="/home/cj/react/packer/react.sh"
      }
@@ -30,7 +29,7 @@ resource "google_compute_instance_group_manager" "instance_group_manager" {
   target_size        = "1"
 }
 resource "google_compute_autoscaler" "react" {
-  name   = "scaler"
+  name   = "scaler-${random_string.random.result}"
   zone   = "${var.zone}"
   target = "${google_compute_instance_group_manager.instance_group_manager.self_link}"
 
