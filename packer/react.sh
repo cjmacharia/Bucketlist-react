@@ -40,4 +40,4 @@ main(){
     ubuntu_install
     check_os
 }
-main"$@""
+main"$@"
