@@ -11,7 +11,7 @@ ubuntu_install(){
 mac_os(){
     echo "you are using macos"
 }
-check-os(){
+check_os(){
     operation_system=$(python -mplatform)
     found_os=
     if [[ operation_system =~ "Ubuntu" ]] ; then
