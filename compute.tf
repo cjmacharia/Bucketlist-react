@@ -15,15 +15,15 @@ resource "google_compute_instance_template" "instance_template" {
   lifecycle {
     create_before_destroy = true
   }
-  
-  
+
+
   metadata {
      startup_script="/home/cj/react/packer/react.sh"
      }
 }
 
 resource "google_compute_instance_group_manager" "instance_group_manager" {
-  name               = "instance-group-manager"
+  name               = "instance-group-manager-${random_string.random.result}"
   instance_template  = "${google_compute_instance_template.instance_template.self_link}"
   base_instance_name = "instance-group-manager"
   zone               = "${var.zone}"
