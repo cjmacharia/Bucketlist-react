@@ -29,3 +29,18 @@ resource "google_compute_instance_group_manager" "instance_group_manager" {
   zone               = "${var.zone}"
   target_size        = "1"
 }
+resource "google_compute_autoscaler" "react" {
+  name   = "scaler"
+  zone   = "${var.zone}"
+  target = "${google_compute_instance_group_manager.instance_group_manager.self_link}"
+
+  autoscaling_policy = {
+    max_replicas    = "${var.max_instances}"
+    min_replicas    = "${var.min_instances}"
+    cooldown_period = 60
+
+    cpu_utilization {
+      target = 0.5
+    }
+  }
+}
