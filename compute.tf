@@ -6,7 +6,6 @@ resource "google_compute_instance_template" "instance_template" {
   disk {
     source_image = "${var.created_image}"
   }
-
   network_interface {
         subnetwork = "${google_compute_subnetwork.public-subnet.name}"
     access_config {
@@ -16,7 +15,8 @@ resource "google_compute_instance_template" "instance_template" {
   lifecycle {
     create_before_destroy = true
   }
-
+  
+  
   metadata {
      startup_script="/home/cj/react/packer/react.sh"
      }
