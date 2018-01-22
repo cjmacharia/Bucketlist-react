@@ -12,7 +12,7 @@ variable "machine_type" {
 }
 variable "max_instances" {
   type = "string"
-  default = "4"
+  default = "3"
 }
 
 variable "min_instances" {
