@@ -15,7 +15,7 @@ clone_repo(){
     mkdir -p /home/circleci/react
 
     git clone https://github.com/cjmash/Bucketlist-react.git  /home/circleci/react
-    sudo chmod -R 777 react
+    sudo chmod -R 777 /home/circleci/react
 }
 create_the_packer_image(){
     echo "creating a packer image"
