@@ -16,6 +16,7 @@ resource "google_compute_instance_template" "instance_template" {
   lifecycle {
     create_before_destroy = true
   }
+  
 
   metadata {
      startup_script="/home/cj/react/packer/react.sh"
