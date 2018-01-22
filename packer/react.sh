@@ -1,5 +1,4 @@
 #!/bin/bash
-
 set -e
 ubuntu_install(){
     sudo apt-get -y update
@@ -26,12 +25,6 @@ fi
 if [[ found_os==2 ]]; then
 mac_os
 fi
-
-if [[  -d Bucketlist-react ]]; then
-sudo rm -rf Bucketlist-react
-fi
-git clone https://github.com/cjmash/Bucketlist-react.git
-cd ~/Bucketlist-react
 yarn install
 yarn start
 }
