@@ -28,7 +28,7 @@ set_up_terraform_infrastructure(){
     echo "create the gcp infrastructure using terraforms"
      pushd /home/circleci/react
         terraform init -backend=true -backend-config="project=$PROJECT_ID"
-        terraform plan  -var="created_image=${CREATED_IMAGE}" -auto-approve
+        terraform plan  -var="created_image=${CREATED_IMAGE}" 
         terraform apply  -var="created_image=${CREATED_IMAGE}" -auto-approve
     popd
 }
