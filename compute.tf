@@ -12,6 +12,7 @@ resource "google_compute_instance_template" "instance_template" {
           // Ephemeral IP
     }
 }
+  
   lifecycle {
     create_before_destroy = true
   }
