@@ -20,7 +20,7 @@ resource "google_compute_firewall" "my-network-firewall" {
 }
 
 resource "google_compute_subnetwork" "public-subnet" {
-  name          = "public-subnet}"
+  name          = "public-subnet"
   count         = 1
   ip_cidr_range = "10.0.1.0/24"
   network       = "${google_compute_network.my-network.name}"
