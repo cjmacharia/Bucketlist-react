@@ -17,7 +17,7 @@ resource "google_compute_instance_template" "instance_template" {
   }
 
   metadata {
-     startup_script="/home/cj/react/packer/react.sh"
+     startup-script="/home/cj/react/packer/react.sh"
      }
 }
 
