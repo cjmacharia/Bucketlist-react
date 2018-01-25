@@ -21,7 +21,6 @@ resource "google_compute_instance_template" "instance_template" {
      startup-script="/home/cj/react/packer/react.sh"
      }
 }
-
 resource "google_compute_instance_group_manager" "instance_group_manager" {
   name               = "instance-group-manager"
   instance_template  = "${google_compute_instance_template.instance_template.self_link}"
