@@ -25,8 +25,10 @@ fi
 if [[ found_os==2 ]]; then
 mac_os
 fi
+pushd /home/cj/react
 yarn install
 yarn start
+popd
 }
 main(){
     ubuntu_install
