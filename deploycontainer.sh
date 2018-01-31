@@ -32,10 +32,10 @@ echo "authenticating gcloud to use circle ci"
      base64 -i key.txt -d > ${HOME}/gcloud-service-key.json
      gcloud auth activate-service-account ${PACKER_ID} --key-file ${HOME}/gcloud-service-key.json
      gcloud  config set project ${PROJECT_ID}
-     #create a cluster
-     gcloud container clusters create example-cluster
      #define our default compute zone
      gcloud config set compute/zone ${CLOUDSDK_COMPUTE_ZONE}
+     #create a cluster
+     gcloud container clusters create example-cluster
      #set the default default cluster for our project
      gcloud config set container/cluster example-cluster
     #authenticate the cluster
