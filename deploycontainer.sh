@@ -15,7 +15,6 @@ environment_variables(){
 }
 install_docker(){
 echo "installing docker"
-docker version
 }
 create_the_docker_image(){
     echo "creating a docker image with our project in the image"
