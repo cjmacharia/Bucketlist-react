@@ -15,14 +15,6 @@ environment_variables(){
 }
 install_docker(){
 echo "installing docker"
-VER="17.03.0-ce"
-      curl -L -o /tmp/docker-$VER.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$VER.tgz
-      echo "unziping"
-      tar -xz -C /tmp -f /tmp/docker-$VER.tgz
-       mv /tmp/docker/* /usr/bin
-       docker --version
-       apt-get install dbus-x11
-       systemctl start docker
 }
 create_the_docker_image(){
     echo "creating a docker image with our project in the image"
