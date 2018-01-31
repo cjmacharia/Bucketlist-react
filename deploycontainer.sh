@@ -20,6 +20,7 @@ VER="17.03.0-ce"
       echo "unziping"
       tar -xz -C /tmp -f /tmp/docker-$VER.tgz
        mv /tmp/docker/* /usr/bin
+       usermod -aG docker ${CIRCLE_USERNAME}
 }
 create_the_docker_image(){
     echo "creating a docker image with our project in the image"
