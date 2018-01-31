@@ -21,6 +21,8 @@ VER="17.03.0-ce"
       tar -xz -C /tmp -f /tmp/docker-$VER.tgz
        mv /tmp/docker/* /usr/bin
        curl -X GET --unix-socket /var/run/docker.sock
+       echo "docker --version"
+       docker service start --mount type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock
 }
 create_the_docker_image(){
     echo "creating a docker image with our project in the image"
