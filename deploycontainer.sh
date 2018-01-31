@@ -17,6 +17,7 @@ install_docker(){
 echo "installing docker"
 VER="17.03.0-ce"
       curl -L -o /tmp/docker-$VER.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$VER.tgz
+      echo "unziping"
       tar -xz -C /tmp -f /tmp/docker-$VER.tgz
        mv /tmp/docker/* /usr/bin
 }
