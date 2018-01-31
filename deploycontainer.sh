@@ -15,6 +15,8 @@ environment_variables(){
 }
 install_docker(){
 echo "installing docker"
+sudo su
+sudo usermod -aG docker ubuntu
 docker version
 }
 create_the_docker_image(){
