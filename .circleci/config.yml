@@ -30,6 +30,7 @@ jobs:
   deploy_production:
     docker:
       - image: docker
+       - image: circleci/node
     steps:
       - checkout
       - deploy:
