@@ -47,6 +47,7 @@ authenticate_gcloud(){
 
 main(){
 environment_variables
+install_docker
 create_the_docker_image
 authenticate_gcloud
 }
