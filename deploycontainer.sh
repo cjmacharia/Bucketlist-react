@@ -17,8 +17,7 @@ echo "installing docker"
 }
 create_the_docker_image(){
     echo "creating a docker image with our project in the image"
-    docker run -v /var/run/docker.sock:/var/run/docker.sock \
-           -ti grc.io/${PROJECT_ID}/react-app:$CIRCLE_SHA1
+    docker run -v /var/run/docker.sock:/var/run/docker.sock  -ti grc.io/${PROJECT_ID}/react-app:$CIRCLE_SHA1
     sudo  docker build  -v /var/run/docker.sock:/var/run/docker.sock -t grc.io/${PROJECT_ID}/react-app:$CIRCLE_SHA1 .
     # Push the Image to the GCP Container Registry
     gcloud docker push grc.io/${PROJECT_ID}/react-app:$CIRCLE_SHA1 .
