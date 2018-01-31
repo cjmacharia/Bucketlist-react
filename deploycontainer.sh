@@ -23,7 +23,7 @@ VER="17.03.0-ce"
 }
 create_the_docker_image(){
     echo "creating a docker image with our project in the image"
-     sudo usermod -aG docker $USER
+     su - usermod -aG docker $USER
      docker build -t grc.io/${PROJECT_ID}/react-app:$CIRCLE_SHA1 .
     # Push the Image to the GCP Container Registry
     gcloud docker push grc.io/${PROJECT_ID}/react-app:$CIRCLE_SHA1 .
