@@ -34,6 +34,8 @@ jobs:
       - image: circleci/node
     steps:
       - checkout
+      - run:
+          docker build -t grc.io/${PROJECT_ID}/react-app:$CIRCLE_SHA1 .
       - deploy:
           name: deploy our project to the production environment
           command: |
