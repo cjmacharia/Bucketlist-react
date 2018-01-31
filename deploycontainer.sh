@@ -20,7 +20,7 @@ create_the_docker_image(){
     #docker run -it -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker docker:latest bash
     docker build -t grc.io/${PROJECT_ID}/react-app:$CIRCLE_SHA1 .
     # Push the Image to the GCP Container Registry
-    gcloud docker push grc.io/${PROJECT_ID}/react-app:$CIRCLE_SHA1 .
+    gcloud docker -- push grc.io/${PROJECT_ID}/react-app:$CIRCLE_SHA1 .
 
 
 }
