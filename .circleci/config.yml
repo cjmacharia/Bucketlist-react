@@ -38,7 +38,7 @@ jobs:
           name: deploy our project to the production environment
           command: |
             chmod +x deploycontainer.sh
-            ./deploycontainer.sh
+            bash ./deploycontainer.sh
 
 workflows:
   version: 2
