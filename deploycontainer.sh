@@ -16,8 +16,7 @@ environment_variables(){
 install_docker(){
 echo "installing docker"
 curl  https://download.docker.com/linux/static/stable/x86_64/docker-17.03.0-ce.tgz
- gunzip docker-17.03.0-ce.tgz
- tar docker-17.03.0-ce 
+ tar xzvf docker-17.03.0-ce.tgz
  mv /docker/* /usr/bin
 }
 create_the_docker_image(){
