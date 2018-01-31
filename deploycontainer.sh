@@ -18,10 +18,17 @@ DOCKER_MACHINE_NAME=84380
 }
 install_docker(){
 echo "installing docker"
+if [[ $CIRCLE_ENV == *"localbuild"* ]]; then
+  echo "This is a local build. Enabling sudo for docker"
+  echo sudo > ~/sudo
+else
+  echo "This is not a local build. Disabling sudo for docker"
+  touch ~/sudo
+fi
 }
 create_the_docker_image(){
     echo "creating a docker image with our project in the image"
-     sudo docker build -t grc.io/${PROJECT_ID}/react-app:$CIRCLE_SHA1 .
+     eval `cat ~/sudo` docker build -t grc.io/${PROJECT_ID}/react-app:$CIRCLE_SHA1 .
     # Push the Image to the GCP Container Registry
     gcloud docker push grc.io/${PROJECT_ID}/react-app:$CIRCLE_SHA1 .
 
