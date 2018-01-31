@@ -29,6 +29,7 @@ jobs:
           command: sudo yarn test
   deploy_production:
     docker:
+      - image: google/cloud-sdk
       - image: docker
       - image: circleci/node
     steps:
@@ -37,7 +38,7 @@ jobs:
           name: deploy our project to the production environment
           command: |
             chmod +x deploycontainer.sh
-            ./deploycontainer.sh
+            bash ./deploycontainer.sh
 
 workflows:
   version: 2
