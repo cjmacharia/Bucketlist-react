@@ -27,9 +27,9 @@ echo "authenticating gcloud to use circle ci"
     apt-get update && apt-get --only-upgrade install kubectl google-cloud-sdk google-cloud-sdk-datastore-emulator google-cloud-sdk-pubsub-emulator google-cloud-sdk-app-engine-go google-cloud-sdk-app-engine-java google-cloud-sdk-app-engine-python google-cloud-sdk-cbt google-cloud-sdk-bigtable-emulator google-cloud-sdk-datalab
      # Authenticate CircleCI with the service account file
      # Save the string to a text file key
-     echo ${SERVICE_KEY} > key.txt
+     echo ${PACKER_AUTH} > key.txt
         # Decode the Service Account
-     echo ${PACKER_AUTH} |  --decode --ignore-garbage > ${HOME}/gcloud-service-key.json
+     base64 -i key.txt -d > ${HOME}/gcloud-service-key.json
      gcloud auth activate-service-account ${PACKER_ID} --key-file ${HOME}/gcloud-service-key.json
      gcloud  config set project ${PROJECT_ID}
      #create a cluster
