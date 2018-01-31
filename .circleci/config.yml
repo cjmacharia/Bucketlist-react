@@ -36,7 +36,6 @@ jobs:
       - deploy:
           name: deploy our project to the production environment
           command: |
-            apt-get install bash
             chmod +x deploycontainer.sh
             bash ./deploycontainer.sh
 
