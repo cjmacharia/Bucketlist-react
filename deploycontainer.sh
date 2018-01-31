@@ -4,10 +4,6 @@ set -e
 
 environment_variables(){
     echo "declaring variables"
-    DOCKER_TLS_VERIFY=1
-DOCKER_HOST=tcp://35.190.128.29:2376
-DOCKER_CERT_PATH=/tmp/docker-certs683304440
-DOCKER_MACHINE_NAME=84380
     PROJECT_NAME="packer"
     CLOUDSDK_COMPUTE_ZONE="europe-west3-b"
     CLUSTER_NAME="example-cluster"
