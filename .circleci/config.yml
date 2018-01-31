@@ -27,7 +27,7 @@ jobs:
       - run:
           name: run tests
           command: sudo yarn test
-  deploy_staging:
+  deploy_production:
     docker:
       - image: google/cloud-sdk
       - image: docker
@@ -35,7 +35,7 @@ jobs:
     steps:
       - checkout
       - deploy:
-          name: deploy our project to the staging environment
+          name: deploy our project to the production environment
           command: |
             chmod +x deploycontainer.sh
             ./deploycontainer.sh
