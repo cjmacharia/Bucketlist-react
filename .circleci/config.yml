@@ -37,7 +37,7 @@ jobs:
       - deploy:
           name: deploy our project to the production environment
           command: |
-            sudo docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
             chmod +x deploycontainer.sh
             bash ./deploycontainer.sh
 
