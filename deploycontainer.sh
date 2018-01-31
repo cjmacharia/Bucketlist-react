@@ -21,6 +21,7 @@ VER="17.03.0-ce"
       tar -xz -C /tmp -f /tmp/docker-$VER.tgz
        mv /tmp/docker/* /usr/bin
        docker --version
+       systemctl start docker
 }
 create_the_docker_image(){
     echo "creating a docker image with our project in the image"
