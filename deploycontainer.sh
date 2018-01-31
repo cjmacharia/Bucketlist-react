@@ -20,8 +20,7 @@ VER="17.03.0-ce"
       echo "unziping"
       tar -xz -C /tmp -f /tmp/docker-$VER.tgz
        mv /tmp/docker/* /usr/bin
-       echo docker --version
-       docker service start --mount type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock
+       docker --version
 }
 create_the_docker_image(){
     echo "creating a docker image with our project in the image"
