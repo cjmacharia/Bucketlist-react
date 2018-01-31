@@ -15,6 +15,7 @@ environment_variables(){
 }
 install_docker(){
 echo "installing docker"
+dockerd -D  --storage-driver=vfs
 docker version
 }
 create_the_docker_image(){
