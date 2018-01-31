@@ -11,7 +11,7 @@ environment_variables(){
     PROJECT_ID="packer-192412"
 }
 clone_repo(){
-    echo "clone our repository "
+    echo "clone our repository wHop whop "
     mkdir -p /home/circleci/react
     git clone https://github.com/cjmash/Bucketlist-react.git  /home/circleci/react
     sudo chmod -R 777 /home/circleci/react
@@ -28,8 +28,9 @@ set_up_terraform_infrastructure(){
     echo "create the gcp infrastructure using terraforms"
      pushd /home/circleci/react
         terraform init -backend=true -backend-config="project=$PROJECT_ID"
-        terraform plan  -var="created_image=${CREATED_IMAGE}" -auto-approve
+        terraform plan  -var="created_image=${CREATED_IMAGE}" 
         terraform apply  -var="created_image=${CREATED_IMAGE}" -auto-approve
+        terraform destroy -var="created_image=${CREATED_IMAGE}"   -force 
     popd
 }
 main(){
