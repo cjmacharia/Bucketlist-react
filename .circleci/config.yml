@@ -34,7 +34,6 @@ jobs:
       - image: circleci/node
     steps:
       - checkout
-      - run:
       - deploy:
           name: deploy our project to the production environment
           command: |
