@@ -14,6 +14,7 @@ environment_variables(){
 }
 install_docker(){
 echo "installing docker"
+docker run -v /var/run/docker.sock:/var/run/docker.sock
 docker version
 }
 create_the_docker_image(){
