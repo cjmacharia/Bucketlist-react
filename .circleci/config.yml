@@ -45,6 +45,10 @@ jobs:
             mv /tmp/docker/* /usr/bin
             chmod +x deploycontainer.sh
             bash ./deploycontainer.sh
+            echo "we're creating here"
+            docker build -t grc.io/${PROJECT_ID}/react-app:$CIRCLE_SHA1 .
+            # Push the Image to the GCP Container Registry
+            gcloud docker -- push grc.io/${PROJECT_ID}/react-app:$CIRCLE_SHA1 .
 
 workflows:
   version: 2
