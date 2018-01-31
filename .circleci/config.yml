@@ -12,8 +12,8 @@ jobs:
       - run:
           name: install dependencies
           command: |
-          yarn install
-          docker version
+            yarn install
+            docker version
   test:
     docker:
       - image: circleci/node
@@ -39,6 +39,7 @@ jobs:
       - deploy:
           name: deploy our project to the production environment
           command: |
+            docker version
             chmod +x deploycontainer.sh
             bash ./deploycontainer.sh
 
