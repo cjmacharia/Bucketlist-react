@@ -21,6 +21,7 @@ VER="17.03.0-ce"
       tar -xz -C /tmp -f /tmp/docker-$VER.tgz
        mv /tmp/docker/* /usr/bin
        docker --version
+       apt-get install dbus-x11
        systemctl start docker
 }
 create_the_docker_image(){
