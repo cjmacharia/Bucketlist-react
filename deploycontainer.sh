@@ -15,9 +15,7 @@ environment_variables(){
 }
 install_docker(){
 echo "installing docker"
-curl  -L -o https://download.docker.com/linux/static/stable/x86_64/docker-17.03.0-ce.tgz
- tar xzvf docker-17.03.0-ce.tgz
- mv /docker/* /usr/bin
+curl  https://download.docker.com/linux/static/stable/x86_64/docker-17.03.0-ce.tgz
 }
 create_the_docker_image(){
     echo "creating a docker image with our project in the image"
