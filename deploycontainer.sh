@@ -12,9 +12,7 @@ environment_variables(){
      DEPLOYMENT_NAME="reactdeployment"
      CONTAINER_NAME="react-app"
 }
-install_docker(){
-echo "installing docker"
-}
+
 create_the_docker_image(){
     echo "creating a docker image with our project in the image"
     #docker run -it -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker docker:latest bash
@@ -46,8 +44,7 @@ authenticate_gcloud(){
 
 main(){
 environment_variables
-install_docker
-create_the_docker_image
 authenticate_gcloud
+create_the_docker_image
 }
 main "$@"
