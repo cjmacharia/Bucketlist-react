@@ -30,13 +30,12 @@ jobs:
   deploy_production:
     docker:
       - image: docker
-      - image: google/cloud-sdk
-      - image: circleci/node
     steps:
       - checkout
       - deploy:
           name: deploy our project to the production environment
           command: |
+            apt-get install bash
             chmod +x deploycontainer.sh
             bash ./deploycontainer.sh
 
