@@ -14,8 +14,10 @@ environment_variables(){
      CONTAINER_NAME="react-app"
 }
 install_docker(){
-docker run -it -v /var/run/docker.sock:/var/run/docker.sock ubuntu:16.04 bash
-apt-get install docker.io
+echo "installing docker"
+curl -L -o /tmp/docker-$VER.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$VER.tgz
+ tar -xz -C /tmp -f /tmp/docker-$VER.tgz
+ mv /tmp/docker/* /usr/bin
 }
 create_the_docker_image(){
     echo "creating a docker image with our project in the image"
