@@ -30,7 +30,6 @@ jobs:
   deploy_production:
     docker:
       - image: google/cloud-sdk
-      - image: docker
       - image: circleci/node
     steps:
       - checkout
