@@ -1,0 +1,62 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node
+    working_directory: ~/react
+    steps:
+      - checkout
+      - run:
+          name: install yarn update
+          command:  sudo npm install yarn -g
+      - run:
+          name: install dependencies
+          command: yarn install
+  test:
+    docker:
+      - image: circleci/node
+    working_directory: ~/react
+    steps:
+      - checkout
+      - run:
+          name: install yarn update
+          command:  sudo npm install yarn -g
+      - run:
+          name: install dependencies
+          command: yarn install
+      - run:
+          name: run tests
+          command: sudo yarn test
+  deploy_staging:
+    docker:
+      - image: google/cloud-sdk
+      - image: docker
+      - image: circleci/node
+    steps:
+      - checkout
+      - deploy:
+          name: deploy our project to the staging environment
+          command: |
+            chmod +x deploycontainer.sh
+            ./deploycontainer.sh
+
+workflows:
+  version: 2
+  build_and_test_approval_deploy:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+      - deploy_staging:
+          type: approval
+          requires:
+            - test
+          filters:
+            branches:
+              only: develop
+      - deploy_production:
+          filters:
+            branches:
+              only: master
+
