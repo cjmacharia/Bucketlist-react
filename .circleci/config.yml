@@ -29,9 +29,8 @@ jobs:
           command: sudo yarn test
   deploy_production:
     docker:
-      - image: docker
-      - image: google/cloud-sdk
       - image: circleci/node
+      - image: google/cloud-sdk
     steps:
       - checkout
       - deploy:
