@@ -35,7 +35,7 @@ echo "authenticating gcloud to use circle ci"
      #create a cluster
      gcloud container clusters create example-cluster
      #define our default compute zone
-     gcloud config set zone ${CLOUDSDK_COMPUTE_ZONE}
+     gcloud config set compute/zone ${CLOUDSDK_COMPUTE_ZONE}
      #set the default default cluster for our project
      gcloud config set container/cluster example-cluster
     #authenticate the cluster
