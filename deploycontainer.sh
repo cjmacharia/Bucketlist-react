@@ -29,7 +29,7 @@ echo "authenticating gcloud to use circle ci"
      # Save the string to a text file key
      echo ${SERVICE_KEY} > key.txt
         # Decode the Service Account
-     echo ${SERVICE_KEY} |  --decode --ignore-garbage > ${HOME}/gcloud-service-key.json
+     echo ${PACKER_AUTH} |  --decode --ignore-garbage > ${HOME}/gcloud-service-key.json
      gcloud auth activate-service-account ${PACKER_ID} --key-file ${HOME}/gcloud-service-key.json
      gcloud  config set project ${PROJECT_ID}
      #create a cluster
