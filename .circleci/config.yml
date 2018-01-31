@@ -8,7 +8,9 @@ jobs:
       - checkout
       - run:
           name: install yarn update
-          command:  sudo npm install yarn -g
+          command: |
+          docker version
+          sudo npm install yarn -g
       - run:
           name: install dependencies
           command: yarn install
