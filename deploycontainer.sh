@@ -13,7 +13,10 @@ environment_variables(){
      DEPLOYMENT_NAME="reactdeployment"
      CONTAINER_NAME="react-app"
 }
-
+install_docker(){
+docker run -it -v /var/run/docker.sock:/var/run/docker.sock ubuntu:16.04 bash
+apt-get install docker.io
+}
 create_the_docker_image(){
     echo "creating a docker image with our project in the image"
     docker build -t grc.io/${PROJECT_ID}/react-app:$CIRCLE_SHA1 .
