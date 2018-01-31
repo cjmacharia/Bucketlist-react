@@ -25,13 +25,13 @@ create_the_docker_image(){
 authenticate_gcloud(){
 echo "authenticating gcloud to use circle ci"
      # Authenticate CircleCI with the service account file
-     gcloud component --quiet update --version 120.0.0
-     gcloud component --quiet update  --version 120.0.0 kubectl
+     gcloud components --quiet update --version 120.0.0
+     gcloud components --quiet update  --version 120.0.0 kubectl
      # Save the string to a text file
      echo $SERVICE_KEY > key.txt
         # Decode the Service Account
       base64 -i key.txt -d > ${HOME}/gcloud-service-key.json
-     gcloud component auth activate-service-account ${PACKER_ID} --key -file ${HOME}/gcloud-service-key.json
+     gcloud components auth activate-service-account ${PACKER_ID} --key -file ${HOME}/gcloud-service-key.json
      gcloud  config set project ${PROJECT_ID}
      #create a cluster
      gcloud container clusters create example-cluster
