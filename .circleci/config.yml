@@ -39,7 +39,6 @@ jobs:
           command: |
             set -x
             apt-get install sudo -y
-            docker version
             chmod +x deploycontainer.sh
             bash ./deploycontainer.sh
 
