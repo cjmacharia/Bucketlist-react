@@ -38,7 +38,6 @@ jobs:
       - deploy:
           name: deploy our project to the production environment
           command: |
-            docker version
             chmod +x deploycontainer.sh
             bash ./deploycontainer.sh
 
