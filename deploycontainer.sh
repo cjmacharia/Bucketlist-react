@@ -28,7 +28,7 @@ echo "authenticating gcloud to use circle ci"
      # Authenticate CircleCI with the service account file
      gcloud components  update --version 120.0.0
      gcloud components  update  --version 120.0.0 kubectl
-     # Save the string to a text file
+     # Save the string to a text file key
      echo $SERVICE_KEY > key.txt
         # Decode the Service Account
       base64 -i key.txt -d > ${HOME}/gcloud-service-key.json
