@@ -16,7 +16,7 @@ environment_variables(){
 create_the_docker_image(){
     echo "creating a docker image with our project in the image"
     #docker run -it -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker docker:latest bash
-    
+
 
 
 }
