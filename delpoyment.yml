@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: react-dep
+  labels:
+    #Project ID
+    app: packer-192412
+spec:
+  #Run two instances of our application
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: packer-192412
+    spec:
+      #Container details
+      containers:
+        - name: node-app
+          imagePullPolicy: Always
+          #Ports to expose
+          ports:
+          - containerPort: 8000

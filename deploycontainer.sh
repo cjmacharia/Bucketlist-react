@@ -31,6 +31,8 @@ authenticate_gcloud(){
             gcloud container clusters get-credentials $CLUSTER_NAME
             echo "we're pushing here"
             gcloud docker -- push gcr.io/packer-192412/react-app:$CIRCLE_SHA1
+            kubectl set image deployment/${DEPLOYMENT_NAME} ${CONTAINER_NAME}/gcr.io/packer-192412/react-app:$CIRCLE_SHA1
+            kubectl create -f deployment.yml
 }
 
 main(){
