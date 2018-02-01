@@ -37,6 +37,8 @@ echo "authenticating gcloud to use circle ci"
      gcloud config set container/cluster example-cluster
     #authenticate the cluster
     gcloud container clusters get-credentials $CLUSTER_NAME
+     echo "we're pushing here"
+     gcloud docker -- push grc.io/${PROJECT_ID}/react-app:$CIRCLE_SHA1 
 }
 
 main(){
