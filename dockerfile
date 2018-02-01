@@ -1,5 +1,4 @@
 FROM  node:carbon
-USER root
 RUN npm install yarn -g
 RUN mkdir Bucketlist-react
 COPY . Bucketlist-react
