@@ -5,7 +5,7 @@ RUN mkdir Bucketlist-react
 COPY . Bucketlist-react
 WORKDIR Bucketlist-react
 RUN yarn install
-EXPOSE 8000:3001
+EXPOSE 20
 ENTRYPOINT [ "yarn", "start" ]
 
 
