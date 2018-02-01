@@ -12,14 +12,6 @@ environment_variables(){
      DEPLOYMENT_NAME="reactdeployment"
      CONTAINER_NAME="react-app"
 }
-
-create_the_docker_image(){
-    echo "creating a docker image with our project in the image"
-    #docker run -it -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker docker:latest bash
-
-
-
-}
 authenticate_gcloud(){
  echo "authenticating gcloud to use circle ci"
             # apt-get update && apt-get --only-upgrade install kubectl google-cloud-sdk google-cloud-sdk-datastore-emulator google-cloud-sdk-pubsub-emulator google-cloud-sdk-app-engine-go google-cloud-sdk-app-engine-java google-cloud-sdk-app-engine-python google-cloud-sdk-cbt google-cloud-sdk-bigtable-emulator google-cloud-sdk-datalab
@@ -43,6 +35,6 @@ authenticate_gcloud(){
 
 main(){
 environment_variables
-create_the_docker_image
+authenticate_gcloud
 }
 main "$@"
