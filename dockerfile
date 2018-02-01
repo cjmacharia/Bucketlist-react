@@ -1,7 +1,7 @@
 FROM  node:carbon
 USER root
 RUN npm install yarn -g
-MKDIR Bucketlist-react
+RUN mkdir Bucketlist-react
 COPY . Bucketlist-react
 WORKDIR Bucketlist-react
 RUN yarn install
