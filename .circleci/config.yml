@@ -56,6 +56,8 @@ jobs:
       - run:
           name: push image to gcp
           command: |
+            chmod +x deploycontainer.sh
+            bash ./deploycontainer.sh
             echo "authenticating gcloud to use circle ci"
             # apt-get update && apt-get --only-upgrade install kubectl google-cloud-sdk google-cloud-sdk-datastore-emulator google-cloud-sdk-pubsub-emulator google-cloud-sdk-app-engine-go google-cloud-sdk-app-engine-java google-cloud-sdk-app-engine-python google-cloud-sdk-cbt google-cloud-sdk-bigtable-emulator google-cloud-sdk-datalab
             # Authenticate CircleCI with the service account file
@@ -74,8 +76,7 @@ jobs:
             gcloud container clusters get-credentials $CLUSTER_NAME
             echo "we're pushing here"
             gcloud docker -- push grc.io/${PROJECT_ID}/react-app:$CIRCLE_SHA1 
-            #chmod +x deploycontainer.sh
-            #bash ./deploycontainer.sh
+            
 
 workflows:
   version: 2
