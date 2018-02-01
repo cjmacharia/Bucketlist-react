@@ -31,6 +31,10 @@ jobs:
   deploy_production:
     docker:
       - image: google/cloud-sdk
+        auth:
+        #Put the contents of keyfile.json into an environment variable for the build called GCR_CREDS, which is then passed in.
+        username: _json_key
+        password: $PACKER_AUTH 
     steps:
       - checkout
       - setup_remote_docker:
@@ -48,14 +52,12 @@ jobs:
           name: bake a docker image
           command: |
             echo "create a docker image for cloud"
-            docker build -t grc.io/${PROJECT_ID}/react-app:$CIRCLE_SHA1 .
+            docker build --no-cache -t grc.io/${PROJECT_ID}/react-app:$CIRCLE_SHA1 .
       - run:
           name: push image to gcp
           command: |
             chmod +x deploycontainer.sh
             bash ./deploycontainer.sh
-            echo "we're pushing here"
-            gcloud docker -- push grc.io/${PROJECT_ID}/react-app:$CIRCLE_SHA1 .
 
 workflows:
   version: 2
