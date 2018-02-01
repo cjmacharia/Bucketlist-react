@@ -51,7 +51,7 @@ jobs:
           name: bake a docker image
           command: |
             echo "create a docker image for cloud"
-            docker build --no-cache -t grc.io/${PROJECT_ID}/react-app:$CIRCLE_SHA1 .
+            docker build --no-cache -t gcr.io/packer-192412/react-app:$CIRCLE_SHA1 .
       - run:
           name: push image to gcp
           command: |
@@ -74,7 +74,7 @@ jobs:
             #authenticate the cluster
             gcloud container clusters get-credentials $CLUSTER_NAME
             echo "we're pushing here"
-            gcloud docker -- push grc.io/${PROJECT_ID}/react-app:$CIRCLE_SHA1 
+            gcloud docker -- push gcr.io/packer-192412/react-app:$CIRCLE_SHA1 
             
 
 workflows:
