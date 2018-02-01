@@ -22,7 +22,7 @@ create_the_docker_image(){
 }
 authenticate_gcloud(){
 echo "authenticating gcloud to use circle ci"
-    apt-get update && apt-get --only-upgrade install kubectl google-cloud-sdk google-cloud-sdk-datastore-emulator google-cloud-sdk-pubsub-emulator google-cloud-sdk-app-engine-go google-cloud-sdk-app-engine-java google-cloud-sdk-app-engine-python google-cloud-sdk-cbt google-cloud-sdk-bigtable-emulator google-cloud-sdk-datalab
+   # apt-get update && apt-get --only-upgrade install kubectl google-cloud-sdk google-cloud-sdk-datastore-emulator google-cloud-sdk-pubsub-emulator google-cloud-sdk-app-engine-go google-cloud-sdk-app-engine-java google-cloud-sdk-app-engine-python google-cloud-sdk-cbt google-cloud-sdk-bigtable-emulator google-cloud-sdk-datalab
      # Authenticate CircleCI with the service account file
      # Save the string to a text file key
      echo ${PACKER_AUTH} > key.txt
