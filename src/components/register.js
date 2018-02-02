@@ -52,7 +52,7 @@ class RegisterPage extends Component{
             <Navigator />
             <Col md = {4} mdPush={4} >
             <Toaster/>
-              <Panel header='Register' bsStyle="warning">
+              <Panel header='Register Here' bsStyle="warning">
                 <FormGroup>
                   <FormControl type="text" id = "username" placeholder="username" onChange={(event)=>this.setState({username:event.target.value})}/>
                 </FormGroup>
