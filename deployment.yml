@@ -16,7 +16,7 @@ spec:
       #Container details
       containers:
         - name: react-app
-          image: gcr.io/packer-192412/react-app:1b5f55942418
+          image: /gcr.io/packer-192412/react-app:295c154e36f74f0831cc73b88b5dcdebc2cbd534
 
           imagePullPolicy: Always
           #Ports to expose
