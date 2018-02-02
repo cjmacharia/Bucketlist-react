@@ -32,9 +32,9 @@ authenticate_gcloud(){
             echo "we're pushing here"
             gcloud docker -- push gcr.io/packer-192412/react-app:$CIRCLE_SHA1
              echo "creating the deployment file"
-            kubectl create -f deployment.yml
+            kubectl apply -f deployment.yml
             echo "creaing the services"
-            kubectl create -f service.yml
+            kubectl apply -f service.yml
             echo "updating the new image"
             kubectl set image deployment/${DEPLOYMENT_NAME} ${CONTAINER_NAME}=/gcr.io/packer-192412/react-app:$CIRCLE_SHA1
 
