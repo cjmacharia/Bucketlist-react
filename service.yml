@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  #Service name
+  name: react-service
+spec:
+  selector:
+    app: packer-192412
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8080
+  type: LoadBalancer
