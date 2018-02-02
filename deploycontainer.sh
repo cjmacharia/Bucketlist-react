@@ -9,7 +9,7 @@ environment_variables(){
     CLUSTER_NAME="example-cluster"
     PROJECT_ID="packer-192412"
      #As specified in Deployment.yml
-     DEPLOYMENT_NAME="reactdeployment"
+     DEPLOYMENT_NAME="react-dep"
      CONTAINER_NAME="react-app"
 }
 authenticate_gcloud(){
@@ -35,7 +35,7 @@ authenticate_gcloud(){
             kubectl create -f deployment.yml
             echo "updating the new image"
             kubectl set image deployment/${DEPLOYMENT_NAME} ${CONTAINER_NAME}=/gcr.io/packer-192412/react-app:$CIRCLE_SHA1
-           
+
 }
 
 main(){
