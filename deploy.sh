@@ -29,7 +29,9 @@ set_up_terraform_infrastructure(){
      pushd /home/circleci/react
         terraform init -backend=true -backend-config="project=$PROJECT_ID"
         terraform plan  -var="created_image=${CREATED_IMAGE}" 
-        terraform apply  -var="created_image=${CREATED_IMAGE}" -auto-approve
+        terraform apply  -var="created_image=${CREATED_IMAGE}" -auto-approve     
+        terraform destroy  -var="created_image=${CREATED_IMAGE}" -force
+        
     popd
 }
 main(){
