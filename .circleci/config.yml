@@ -2,19 +2,20 @@ version: 2
 jobs:
   build:
     docker:
+      - image: cjmash/79061fc8277
       - image: circleci/node
     working_directory: ~/react
     steps:
       - checkout
       - run:
           name: install yarn update
-          command: sudo npm install yarn -g
+          command:  sudo npm install yarn -g
       - run:
           name: install dependencies
-          command: |
-            yarn install
+          command: yarn install
   test:
     docker:
+      - image: cjmash/79061fc8277
       - image: circleci/node
     working_directory: ~/react
     steps:
@@ -28,35 +29,31 @@ jobs:
       - run:
           name: run tests
           command: sudo yarn test
-  deploy_production:
+  deploy_staging:
     docker:
-      - image: google/cloud-sdk
-        auth:
-        #Put the contents of keyfile.json into an environment variable for the build called GCR_CREDS, which is then passed in.
-        username: _json_key
-        password: $PACKER_AUTH
+      - image: cjmash/79061fc8277
+      - image: circleci/node
     steps:
       - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
-      - run:
-          name: Install Docker client
+      - deploy:
+          name: deploy our project to the staging cloud
           command: |
-            set -x
-            VER="17.03.0-ce"
-            curl -L -o /tmp/docker-$VER.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$VER.tgz
-            tar -xz -C /tmp -f /tmp/docker-$VER.tgz
-            mv /tmp/docker/* /usr/bin
-      - run:
-          name: bake a docker image
+            chmod +x deploy.sh
+            ./deploy.sh
+
+  deploy_production:
+    docker:
+      - image: cjmash/79061fc8277
+      - image: circleci/node
+    steps:
+      - checkout
+      - deploy:
+          name: deploy our project to the  production cloud
           command: |
-            echo "create a docker image for cloud"
-            docker build --no-cache -t gcr.io/packer-192412/react-app:$CIRCLE_SHA1 .
-      - run:
-          name: push image to gcp
-          command: |
-            chmod +x deploycontainer.sh
-            bash ./deploycontainer.sh
+              chmod +x deploy.sh
+              bash ./deploy.sh
+
+
 
 workflows:
   version: 2
@@ -74,10 +71,7 @@ workflows:
             branches:
               only: develop
       - deploy_production:
-          requires:
-              - test
           filters:
             branches:
               only: master
-
 
